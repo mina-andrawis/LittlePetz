@@ -19,6 +19,7 @@
     <ImageView
         android:id="@+id/bunny"
         android:layout_width="150dp"
+        android:onClick="selectHandler"
         android:layout_height="137dp"
         android:layout_below="@id/textView1"
         android:layout_gravity="center"
@@ -27,6 +28,7 @@
 
     <ImageView
         android:id="@+id/bird"
+        android:onClick="selectHandler"
         android:layout_width="131dp"
         android:layout_height="128dp"
         android:layout_gravity="center"
@@ -39,6 +41,7 @@
 
     <ImageView
         android:id="@+id/cat"
+        android:onClick="selectHandler"
         android:layout_width="150dp"
         android:layout_height="137dp"
         android:layout_below="@id/bunny"
@@ -49,6 +52,7 @@
 
     <ImageView
         android:id="@+id/fish"
+        android:onClick="selectHandler"
         android:layout_width="131dp"
         android:layout_height="128dp"
         android:layout_gravity="center"
@@ -60,6 +64,7 @@
 
     <ImageView
         android:id="@+id/dog"
+        android:onClick="selectHandler"
         android:layout_width="131dp"
         android:layout_height="128dp"
         android:layout_gravity="center"
