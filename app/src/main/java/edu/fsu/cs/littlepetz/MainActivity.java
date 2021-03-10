@@ -58,4 +58,15 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void selectHandler(View v)
+    {
+        if(v.equals(findViewById(R.id.bird)));
+        {
+
+        }
+        //do something else
+
+    }
 }
+
