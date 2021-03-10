@@ -1,5 +1,8 @@
 package edu.fsu.cs.littlepetz;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(v.equals(findViewById(R.id.bird)));
         {
-
+            Log.i("key", "INSIDE");
         }
         //do something else
 
