@@ -7,6 +7,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.View;
 
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectHandler(View v)
     {
+
         if(v.equals(findViewById(R.id.bird)));
         {
 
