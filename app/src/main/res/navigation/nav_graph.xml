@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="edu.fsu.cs.littlepetz.FirstFragment"
+        android:name="edu.fsu.cs.littlepetz.IntroFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/intro_fragment">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -17,12 +17,20 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="edu.fsu.cs.littlepetz.SecondFragment"
+        android:name="edu.fsu.cs.littlepetz.PetPickerFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        tools:layout="@layout/pet_picker">
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_HomeActivity"
+            app:destination="@id/HomeActivity" />
     </fragment>
+
+    <fragment
+        android:id="@+id/HomeActivity"
+        android:name="edu.fsu.cs.littlepetz.HomePageActivity"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/home_page_activity">
+
+    </fragment>
+
 </navigation>
