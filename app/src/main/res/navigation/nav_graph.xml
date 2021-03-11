@@ -21,12 +21,12 @@
         android:label="@string/second_fragment_label"
         tools:layout="@layout/pet_picker">
         <action
-            android:id="@+id/action_SecondFragment_to_ThirdFragment"
-            app:destination="@id/ThirdFragment" />
+            android:id="@+id/action_SecondFragment_to_HomeActivity"
+            app:destination="@id/HomeActivity" />
     </fragment>
 
     <fragment
-        android:id="@+id/ThirdFragment"
+        android:id="@+id/HomeActivity"
         android:name="edu.fsu.cs.littlepetz.HomePageActivity"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/home_page_activity">

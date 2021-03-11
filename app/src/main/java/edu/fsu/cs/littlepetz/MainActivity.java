@@ -18,6 +18,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import java.util.Objects;
 
@@ -55,20 +56,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void choosePet(View v)
-    {
-
-            Intent intent = new Intent(this, HomePageActivity.class);
-            Uri path = Uri.parse("android.resource://edu.fsu.cs.littlepetz" + R.id.bunny);
-            String imgPath = path.toString();
-            intent.putExtra("EXTRA_IMAGEVIEW_URL", imgPath);
-            startActivity(intent);
-
-            Log.i("key", imgPath);
-
-
-        //do something else
-
-    }
 }
 
