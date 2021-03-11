@@ -2,7 +2,6 @@ package edu.fsu.cs.littlepetz;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -70,14 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
         if(v.equals(findViewById(R.id.bird)));
         {
-            //create intent and send URI data of image to HomePageActivity
-            Intent intent = new Intent(this, HomePageActivity.class);
-            Uri path = Uri.parse("android.resource://edu.fsu.cs.littlepetz" + R.drawable.bird);
-            intent.setData(path);
-            Log.d("path", String.valueOf(path));
-            startActivity(intent);;
-
+            Log.i("key", "INSIDE");
         }
+        //do something else
 
     }
 }
