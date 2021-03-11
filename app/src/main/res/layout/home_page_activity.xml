@@ -17,14 +17,14 @@
         android:gravity="center"/>
 
     <ImageView
-        android:id="@+id/bunny"
+        android:id="@+id/pet"
         android:layout_width="match_parent"
         android:onClick="selectHandler"
         android:layout_height="300dp"
         android:layout_below="@id/textView1"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:src="@drawable/bunny" />
+        android:src="@drawable/ic_launcher_foreground" />
 
 
 

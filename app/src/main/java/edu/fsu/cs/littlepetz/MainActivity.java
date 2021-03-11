@@ -2,6 +2,7 @@ package edu.fsu.cs.littlepetz;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -30,16 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-        /*
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-         */
     }
 
     @Override
@@ -64,13 +55,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void selectHandler(View v)
+    public void choosePet(View v)
     {
 
-        if(v.equals(findViewById(R.id.bird)));
-        {
-            Log.i("key", "INSIDE");
-        }
+            Intent intent = new Intent(this, HomePageActivity.class);
+            Uri path = Uri.parse("android.resource://edu.fsu.cs.littlepetz" + R.id.bunny);
+            String imgPath = path.toString();
+            intent.putExtra("EXTRA_IMAGEVIEW_URL", imgPath);
+            startActivity(intent);
+
+            Log.i("key", imgPath);
+
+
         //do something else
 
     }
