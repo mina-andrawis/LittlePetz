@@ -33,7 +33,7 @@ public class PetPickerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(PetPickerFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_HomeFragment);
+                        .navigate(R.id.action_PetPicker_to_HomeFragment);
             }
         });
 
