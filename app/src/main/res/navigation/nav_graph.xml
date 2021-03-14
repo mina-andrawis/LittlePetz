@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/HomeActivity"
         android:name="edu.fsu.cs.littlepetz.HomePageActivity"
-        android:label="@string/second_fragment_label"
+        android:label="HomeActivity"
         tools:layout="@layout/home_page_activity">
 
     </fragment>
