@@ -15,9 +15,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.Objects;
 
-public class PetPickerFragment extends Fragment {
-
-
+public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -27,17 +25,7 @@ public class PetPickerFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
-        view.findViewById(R.id.bunny).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(PetPickerFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_HomeFragment);
-            }
-        });
-
-        //do something else
+        
     }
 
 }
