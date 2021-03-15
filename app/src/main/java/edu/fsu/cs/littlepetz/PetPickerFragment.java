@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import java.io.File;
+import java.net.URI;
 import java.util.Objects;
 
 public class PetPickerFragment extends Fragment {
@@ -32,6 +34,9 @@ public class PetPickerFragment extends Fragment {
         view.findViewById(R.id.bunny).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 NavHostFragment.findNavController(PetPickerFragment.this)
                         .navigate(R.id.action_PetPicker_to_HomeFragment);
             }
