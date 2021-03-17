@@ -38,8 +38,10 @@ public class HomeFragment extends Fragment {
         if(null!=bundle) {
             String myData = (String) bundle.getCharSequence("key");
 
-            Log.i("INSIDE HOMEFRAG", myData);
+            Log.i("INSIDE", myData);
         }
+        Log.i("INSIDE", "null");
+
     }
 
 }
