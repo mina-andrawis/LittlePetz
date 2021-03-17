@@ -52,6 +52,7 @@ public class PetPickerFragment extends Fragment {
                 fragobj.setArguments(bundle);
                 mFragmentTransaction.setReorderingAllowed(true);
                 mFragmentTransaction.addToBackStack(null);
+
                 //replace hav_host_fragment with HomeFragment
                 mFragmentTransaction.replace(R.id.nav_host_fragment, newFragment, "HomeFrag").commit();
 

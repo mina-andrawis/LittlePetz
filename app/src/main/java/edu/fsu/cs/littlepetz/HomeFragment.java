@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment {
         getActivity().setContentView(R.layout.home_fragment);
 
         if(null!=bundle) {
+            this.getArguments();
             String myData = (String) bundle.getCharSequence("key");
 
             Log.i("INSIDE", myData);

@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         //petImageView = findViewById(R.id.pet_container);     // petImage from home_fragment
 
-        mViewModel = ViewModelProviders.of(this).get(PickerToHomeViewModel.class);
 
 
     }
