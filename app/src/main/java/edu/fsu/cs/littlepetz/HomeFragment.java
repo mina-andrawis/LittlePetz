@@ -33,6 +33,7 @@ public class HomeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle =getArguments();
+        getActivity().setContentView(R.layout.home_fragment);
 
         if(null!=bundle) {
             String myData = (String) bundle.getCharSequence("key");

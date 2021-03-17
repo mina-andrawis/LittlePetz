@@ -1,6 +1,7 @@
 package edu.fsu.cs.littlepetz;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,13 +42,19 @@ public class PetPickerFragment extends Fragment {
 
                 Fragment frag = getFragmentManager().findFragmentByTag(MainActivity.IMAGE_FRAGMENT_TAG);
 
+                mFragmentTransaction = getFragmentManager().beginTransaction();
+                Fragment newFragment = new HomeFragment();
+
+
                 Bundle bundle = new Bundle();
                 bundle.putCharSequence("key", "bunny");
                 HomeFragment fragobj = new HomeFragment();
                 fragobj.setArguments(bundle);
+                mFragmentTransaction.setReorderingAllowed(true);
                 mFragmentTransaction.addToBackStack(null);
-                mFragmentTransaction.replace(R.id.pet_container, frag, "HomeFrag").commit();
+                mFragmentTransaction.replace(R.id.pet_container, newFragment, "HomeFrag").commit();
 
+                //Fragment fragmentDemo = (Fragment) getFragmentManager().findFragmentByTag(MainActivity.IMAGE_FRAGMENT_TAG);
 
                 NavHostFragment.findNavController(PetPickerFragment.this)
                         .navigate(R.id.action_PetPicker_to_HomeFragment);
