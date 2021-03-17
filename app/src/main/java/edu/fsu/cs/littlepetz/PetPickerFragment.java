@@ -52,12 +52,10 @@ public class PetPickerFragment extends Fragment {
                 fragobj.setArguments(bundle);
                 mFragmentTransaction.setReorderingAllowed(true);
                 mFragmentTransaction.addToBackStack(null);
+                //replace hav_host_fragment with HomeFragment
                 mFragmentTransaction.replace(R.id.nav_host_fragment, newFragment, "HomeFrag").commit();
 
-                //Fragment fragmentDemo = (Fragment) getFragmentManager().findFragmentByTag(MainActivity.IMAGE_FRAGMENT_TAG);
-
-                NavHostFragment.findNavController(PetPickerFragment.this)
-                        .navigate(R.id.action_PetPicker_to_HomeFragment);
+                //NavHostFragment.findNavController(PetPickerFragment.this).navigate(R.id.action_PetPicker_to_HomeFragment);
             }
         });
 
