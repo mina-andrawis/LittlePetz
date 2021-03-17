@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import java.io.File;
@@ -19,6 +21,8 @@ import java.util.Objects;
 
 public class PetPickerFragment extends Fragment {
 
+    FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction = null;
 
 
     @Override
@@ -35,6 +39,14 @@ public class PetPickerFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                Fragment frag = getFragmentManager().findFragmentByTag(MainActivity.IMAGE_FRAGMENT_TAG);
+
+                Bundle bundle = new Bundle();
+                bundle.putCharSequence("key", "bunny");
+                HomeFragment fragobj = new HomeFragment();
+                fragobj.setArguments(bundle);
+                mFragmentTransaction.addToBackStack(null);
+                mFragmentTransaction.replace(R.id.pet_container, frag, "HomeFrag").commit();
 
 
                 NavHostFragment.findNavController(PetPickerFragment.this)
