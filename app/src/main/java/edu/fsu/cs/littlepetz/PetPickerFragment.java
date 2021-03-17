@@ -47,7 +47,7 @@ public class PetPickerFragment extends Fragment {
 
 
                 Bundle bundle = new Bundle();
-                bundle.putCharSequence("key", "bunny");
+                bundle.putString("key", "bunny");
                 HomeFragment fragobj = new HomeFragment();
                 fragobj.setArguments(bundle);
                 mFragmentTransaction.setReorderingAllowed(true);
