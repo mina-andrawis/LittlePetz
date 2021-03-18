@@ -18,30 +18,48 @@ import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.home_fragment, container, false);
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
+    ImageView imageView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-        getActivity().setContentView(R.layout.home_fragment);
 
-        if(null!=bundle) {
-            //this.getArguments();
-            String myData = bundle.getString("key");
-
-            Log.i("INSIDE", myData);
-        }
 
 
     }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        //create imageview object
+        final View v = inflater.inflate(R.layout.home_fragment, container, false);
+        imageView = (ImageView) v.findViewById(R.id.petImage);
+
+        Bundle bundle = getArguments();
+        getActivity().setContentView(R.layout.home_fragment);
+
+
+        if(null!=bundle) {
+            String petType = bundle.getString("petType");
+
+            Log.i("INSIDE", petType);
+
+            if (petType.equals("bunny"))
+            {
+                imageView.setImageResource(R.drawable.bunny);
+            }
+
+        }
+        // Inflate the layout for this fragment
+        return v;
+
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+
 
 }

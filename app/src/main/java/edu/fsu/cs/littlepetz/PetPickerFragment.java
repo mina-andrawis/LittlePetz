@@ -41,22 +41,17 @@ public class PetPickerFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Fragment frag = getFragmentManager().findFragmentByTag(MainActivity.IMAGE_FRAGMENT_TAG);
-
                 mFragmentTransaction = getFragmentManager().beginTransaction();
-
 
                 Bundle bundle = new Bundle();
                 HomeFragment fragobj = new HomeFragment();
-                bundle.putString("key", "bunny");
+                bundle.putString("petType", "bunny");
                 fragobj.setArguments(bundle);
                 mFragmentTransaction.setReorderingAllowed(true);
                 mFragmentTransaction.addToBackStack(null);
 
-                //replace hav_host_fragment with HomeFragment object
                 mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
 
-                //NavHostFragment.findNavController(PetPickerFragment.this).navigate(R.id.action_PetPicker_to_HomeFragment);
             }
         });
 
