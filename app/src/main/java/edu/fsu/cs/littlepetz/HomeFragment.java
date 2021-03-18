@@ -24,15 +24,15 @@ public class HomeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        //create imageview object
+        // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.home_fragment, container, false);
+
+        //create imageview object
         imageView = (ImageView) v.findViewById(R.id.petImage);
 
         Bundle bundle = getArguments();
@@ -50,7 +50,6 @@ public class HomeFragment extends Fragment {
             }
 
         }
-        // Inflate the layout for this fragment
         return v;
 
     }

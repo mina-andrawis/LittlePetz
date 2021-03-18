@@ -42,9 +42,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-        //petImageView = findViewById(R.id.pet_container);     // petImage from home_fragment
-
-
 
     }
 
