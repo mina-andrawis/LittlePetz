@@ -45,6 +45,21 @@ public class HomeFragment extends Fragment {
                 imageView.setImageResource(R.drawable.bunny);
                 break;
 
+                case ("bird"):
+                    imageView.setImageResource(R.drawable.bird);
+                    break;
+
+                case ("cat"):
+                    imageView.setImageResource(R.drawable.cat);
+                    break;
+
+                case ("dog"):
+                    imageView.setImageResource(R.drawable.dog);
+                    break;
+
+                case ("fish"):
+                    imageView.setImageResource(R.drawable.fish);
+                    break;
 
             }
 
