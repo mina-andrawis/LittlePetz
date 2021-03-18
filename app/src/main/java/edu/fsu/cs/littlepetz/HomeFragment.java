@@ -42,11 +42,10 @@ public class HomeFragment extends Fragment {
         if(null!=bundle) {
             String petType = bundle.getString("petType");
 
-            Log.i("INSIDE", petType);
-
             if (petType.equals("bunny"))
             {
-                imageView.setImageResource(R.drawable.bunny);
+                imageView.setImageResource(R.drawable.bunny);               // ******** ERROR HERE **** //
+                Log.i("imageview", String.valueOf(imageView.getDrawable()));
             }
 
         }
