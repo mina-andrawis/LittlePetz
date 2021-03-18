@@ -29,9 +29,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
-
-
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.home_fragment, container, false);
 
@@ -39,16 +36,16 @@ public class HomeFragment extends Fragment {
         imageView = (ImageView) v.findViewById(R.id.petImage);
 
         Bundle bundle = getArguments();
-        //getActivity().setContentView(R.layout.home_fragment);
-
 
         if(null!=bundle) {
             String petType = bundle.getString("petType");
 
-            if (petType.equals("bunny"))
-            {
-                imageView.setImageResource(R.drawable.bunny);               // ******** ERROR HERE **** //
-                Log.i("imageview", String.valueOf(imageView.getDrawable()));
+            switch (petType){
+                case ("bunny"):
+                imageView.setImageResource(R.drawable.bunny);
+                break;
+
+
             }
 
         }
