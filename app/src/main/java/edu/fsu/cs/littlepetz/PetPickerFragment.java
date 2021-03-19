@@ -43,18 +43,20 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
         //do something else
     }
 
+    // onClick lister for pets in pet pikcer fragment
     @Override
     public void onClick(View v) {
 
-        Log.i("ID", String.valueOf(v.getId()));
+        //Log.i("ID", String.valueOf(v.getId()));
 
+        mFragmentTransaction = getFragmentManager().beginTransaction();
+
+        Bundle bundle = new Bundle();
+        HomeFragment fragobj = new HomeFragment();
 
         switch (v.getId()){
             case (R.id.bunny):
-                mFragmentTransaction = getFragmentManager().beginTransaction();
 
-                Bundle bundle = new Bundle();
-                HomeFragment fragobj = new HomeFragment();
                 bundle.putString("petType", "bunny");
                 fragobj.setArguments(bundle);
                 mFragmentTransaction.setReorderingAllowed(true);
@@ -63,6 +65,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 //nav_host_fragment is in ContentMain
                 mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
                 break;
+
         }
 
 
