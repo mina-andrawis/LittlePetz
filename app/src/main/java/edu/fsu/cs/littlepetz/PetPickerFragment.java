@@ -20,7 +20,7 @@ import java.io.File;
 import java.net.URI;
 import java.util.Objects;
 
-public class PetPickerFragment extends Fragment {
+public class PetPickerFragment extends Fragment implements View.OnClickListener {
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction = null;
@@ -37,10 +37,20 @@ public class PetPickerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        view.findViewById(R.id.bunny).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        ImageView bunnyImage = (ImageView) view.findViewById(R.id.bunny);
+        bunnyImage.setOnClickListener(this);        //set on onclick listener for bunny image
 
+        //do something else
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        Log.i("ID", String.valueOf(v.getId()));
+
+
+        switch (v.getId()){
+            case (R.id.bunny):
                 mFragmentTransaction = getFragmentManager().beginTransaction();
 
                 Bundle bundle = new Bundle();
@@ -50,13 +60,12 @@ public class PetPickerFragment extends Fragment {
                 mFragmentTransaction.setReorderingAllowed(true);
                 mFragmentTransaction.addToBackStack(null);
 
-                //nav_host_fragment is in content_main
+                //nav_host_fragment is in ContentMain
                 mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                break;
+        }
 
-            }
-        });
 
-        //do something else
+
     }
-
 }

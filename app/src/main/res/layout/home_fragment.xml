@@ -9,14 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:padding="40dp">
+        android:layout_margin="30dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/petImage"
             android:src="@drawable/ic_launcher_foreground"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="60dp"/>
     </FrameLayout>
 
 
