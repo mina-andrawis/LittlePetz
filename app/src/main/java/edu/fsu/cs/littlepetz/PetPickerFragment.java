@@ -36,10 +36,10 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.pet_picker, container, false);
-        Button PetName = (Button) v.findViewById(R.id.getPetName);
-        PetName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
+        return v;    }
+
+        public void clickToNamePet(){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Please Enter a name: ");
                 final EditText input = new EditText(getContext());
@@ -59,10 +59,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 });
                 builder.show();
 
-            }
-        });
-        return v;    }
-
+        }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -97,7 +94,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             case (R.id.bunny):
                 bundle.putString("petType", "bunny");
                 fragobj.setArguments(bundle);
-
+                    clickToNamePet();
                 //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
                 mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
                 break;
@@ -105,6 +102,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             case (R.id.bird):
                 bundle.putString("petType", "bird");
                 fragobj.setArguments(bundle);
+                clickToNamePet();
 
                 //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
                 mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
@@ -113,6 +111,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             case (R.id.cat):
                 bundle.putString("petType", "cat");
                 fragobj.setArguments(bundle);
+                clickToNamePet();
 
                 //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
                 mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
@@ -120,6 +119,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             case (R.id.dog):
                 bundle.putString("petType", "dog");
                 fragobj.setArguments(bundle);
+                clickToNamePet();
 
                 //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
                 mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
@@ -127,6 +127,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             case (R.id.fish):
                 bundle.putString("petType", "fish");
                 fragobj.setArguments(bundle);
+                clickToNamePet();
 
                 //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
                 mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
