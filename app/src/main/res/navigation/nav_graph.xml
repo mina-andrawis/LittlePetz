@@ -3,34 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/IntroFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/IntroFragment"
         android:name="edu.fsu.cs.littlepetz.IntroFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/intro_fragment">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_IntroFragment_to_PetPicker"
+            app:destination="@id/PetPicker" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/PetPicker"
         android:name="edu.fsu.cs.littlepetz.PetPickerFragment"
-        android:label="@string/second_fragment_label"
+        android:label="PetPickerFragment"
         tools:layout="@layout/pet_picker">
         <action
-            android:id="@+id/action_SecondFragment_to_HomeActivity"
-            app:destination="@id/HomeActivity" />
+            android:id="@+id/action_PetPicker_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/HomeActivity"
-        android:name="edu.fsu.cs.littlepetz.HomePageActivity"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/home_page_activity">
-
+        android:id="@+id/HomeFragment"
+        android:name="edu.fsu.cs.littlepetz.HomeFragment"
+        android:label="HomeFragmentLabel"
+        tools:layout="@layout/home_fragment">
     </fragment>
 
 </navigation>

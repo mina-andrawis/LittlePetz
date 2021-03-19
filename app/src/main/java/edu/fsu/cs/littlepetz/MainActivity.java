@@ -11,6 +11,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
@@ -24,6 +26,14 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
+    ViewModel mViewModel;       //ViewModel for petPicker to homeFragment data transmission
+    ImageView petImageView;        // for pet pics
+
+    public final static String IMAGE_FRAGMENT_TAG =
+            "imgFragment";
+    public final static String STATS_FRAGMENT_TAG =
+            "statsFragment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,5 +68,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-}
 
+
+}
