@@ -38,9 +38,18 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
 
 
         ImageView bunnyImage = (ImageView) view.findViewById(R.id.bunny);
-        bunnyImage.setOnClickListener(this);        //set on onclick listener for bunny image
+        ImageView birdImage = (ImageView) view.findViewById(R.id.bird);
+        ImageView catImage = (ImageView) view.findViewById(R.id.cat);
+        ImageView dogImage = (ImageView) view.findViewById(R.id.dog);
+        ImageView fishImage = (ImageView) view.findViewById(R.id.fish);
 
-        //do something else
+
+        bunnyImage.setOnClickListener(this);        //set on onclick listener for bunny image
+        birdImage.setOnClickListener(this);        //set on onclick listener for bird image
+        catImage.setOnClickListener(this);        //set on onclick listener for cat image
+        dogImage.setOnClickListener(this);        //set on onclick listener for dog image
+        fishImage.setOnClickListener(this);        //set on onclick listener for fish image
+
     }
 
     // onClick lister for pets in pet pikcer fragment
@@ -56,18 +65,46 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
 
         switch (v.getId()){
             case (R.id.bunny):
-
                 bundle.putString("petType", "bunny");
                 fragobj.setArguments(bundle);
-                mFragmentTransaction.setReorderingAllowed(true);
-                mFragmentTransaction.addToBackStack(null);
 
-                //nav_host_fragment is in ContentMain
+                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                break;
+
+            case (R.id.bird):
+                bundle.putString("petType", "bird");
+                fragobj.setArguments(bundle);
+
+                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                break;
+
+            case (R.id.cat):
+                bundle.putString("petType", "cat");
+                fragobj.setArguments(bundle);
+
+                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                break;
+            case (R.id.dog):
+                bundle.putString("petType", "dog");
+                fragobj.setArguments(bundle);
+
+                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                break;
+            case (R.id.fish):
+                bundle.putString("petType", "fish");
+                fragobj.setArguments(bundle);
+
+                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
                 mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
                 break;
 
         }
-
+        mFragmentTransaction.setReorderingAllowed(true);
+        mFragmentTransaction.addToBackStack(null);
 
 
     }
