@@ -11,5 +11,4 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="Continue">Continue</string>
     <string name="choose_your_companion">Choose your companion!</string>
-    <string name="petname">petName</string>
 </resources>
