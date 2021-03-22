@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/babyBlue"
     android:orientation="vertical">
 
     <TextView
@@ -35,5 +36,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.6"
-        android:background="?android:attr/detailsElementBackground" />
+        android:background="?android:attr/detailsElementBackground" >
+
+
+        <ProgressBar
+            android:id="@+id/determinateBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:progress="100"/>
+    </FrameLayout>
+
 </LinearLayout>
