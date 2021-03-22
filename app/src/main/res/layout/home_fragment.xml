@@ -4,19 +4,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:text="@string/petname"
+        android:layout_gravity="center"
+        android:layout_marginTop="55dp"
+        />
+
     <FrameLayout
         android:id="@+id/pet_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_margin="30dp">
+        android:layout_margin="30dp"
+        >
+
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/petImage"
-            android:src="@drawable/ic_launcher_foreground"
-            android:layout_marginTop="60dp"/>
+            android:src="@drawable/ic_launcher_foreground" />
     </FrameLayout>
 
 
@@ -24,6 +34,6 @@
         android:id="@+id/stats_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="1.6"
         android:background="?android:attr/detailsElementBackground" />
 </LinearLayout>
