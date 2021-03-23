@@ -15,4 +15,6 @@
     <string name="hunger">Hunger</string>
     <string name="thirst">Thirst</string>
     <string name="happiness">Hapiness</string>
+    <string name="feed">feed</string>
+    <string name="give_water">Give water</string>
 </resources>

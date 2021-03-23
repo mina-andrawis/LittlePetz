@@ -6,12 +6,13 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/petTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="50sp"
         android:text="@string/petname"
         android:layout_gravity="center"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="10dp"
         />
 
     <FrameLayout
@@ -35,14 +36,15 @@
         android:id="@+id/stats_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.6"
+        android:layout_weight="1.5"
         android:background="?android:attr/detailsElementBackground" >
 
 
         <RelativeLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            >
 
             <TextView
                 android:id="@+id/hungerText"
@@ -101,6 +103,27 @@
                 android:layout_toRightOf="@id/happinessText"
                 android:layout_below="@id/thirstBar"
                 android:progress="100"/>
+
+            <Button
+                android:id="@+id/feedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feed"
+                android:layout_below="@id/happinessText"
+                android:layout_margin="10dp"
+                />
+            <Button
+                android:id="@+id/thirstButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/give_water"
+                android:layout_below="@id/happinessText"
+                android:layout_toRightOf="@id/feedButton"
+
+                android:layout_margin="10dp"
+                />
+
+
         </RelativeLayout>
     </FrameLayout>
 
