@@ -39,13 +39,29 @@
         android:background="?android:attr/detailsElementBackground" >
 
 
-        <ProgressBar
-            android:id="@+id/determinateBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
+        <RelativeLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent" >
 
-            android:progress="100"/>
+            <TextView
+                android:id="@+id/hungerText"
+                android:layout_width="88dp"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:text="@string/hunger"
+                android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/hungerBar"
+                android:padding="20dp"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="250dp"
+                android:layout_height="60"
+                android:layout_toRightOf="@id/hungerText"
+                android:progress="100"/>
+        </RelativeLayout>
     </FrameLayout>
 
 </LinearLayout>

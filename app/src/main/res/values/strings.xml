@@ -12,4 +12,5 @@
     <string name="Continue">Continue</string>
     <string name="choose_your_companion">Choose your companion!</string>
     <string name="petname">petName</string>
+    <string name="hunger">Hunger</string>
 </resources>
