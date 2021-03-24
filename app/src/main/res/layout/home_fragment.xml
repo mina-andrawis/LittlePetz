@@ -104,24 +104,26 @@
                 android:layout_below="@id/thirstBar"
                 android:progress="100"/>
 
+
             <Button
                 android:id="@+id/feedButton"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="@string/feed"
                 android:layout_below="@id/happinessText"
-                android:layout_margin="10dp"
-                />
-            <Button
-                android:id="@+id/thirstButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/give_water"
-                android:layout_below="@id/happinessText"
-                android:layout_toRightOf="@id/feedButton"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="80dp"
+                android:text="@string/feed" />
 
-                android:layout_margin="10dp"
-                />
+            <Button
+                android:id="@+id/hydrateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/happinessText"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="40dp"
+                android:layout_toRightOf="@id/feedButton"
+                android:text="@string/hydrate" />
+
 
 
         </RelativeLayout>
