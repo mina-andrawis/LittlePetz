@@ -92,7 +92,7 @@
                 android:layout_marginLeft="32dp"
                 android:text="@string/happiness"
                 android:layout_below="@id/thirstText"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <ProgressBar
                 android:id="@+id/happinessBar"
