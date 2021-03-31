@@ -1,6 +1,8 @@
 package edu.fsu.cs.littlepetz;
 
 import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
@@ -16,9 +18,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import java.io.File;
@@ -40,9 +41,9 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
         return v;    }
 
         public void clickToNamePet(){
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Please Enter a name: ");
-                final EditText input = new EditText(getContext());
+                final EditText input = new EditText(getActivity());
                 input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                 builder.setView(input);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -85,6 +86,8 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
 
         //Log.i("ID", String.valueOf(v.getId()));
 
+        getActivity().setContentView(R.layout.activity_home);
+
         mFragmentTransaction = getFragmentManager().beginTransaction();
 
         Bundle bundle = new Bundle();
@@ -95,8 +98,8 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 bundle.putString("petType", "bunny");
                 fragobj.setArguments(bundle);
                     clickToNamePet();
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
 
             case (R.id.bird):
@@ -104,8 +107,8 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 fragobj.setArguments(bundle);
                 clickToNamePet();
 
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
 
             case (R.id.cat):
@@ -113,29 +116,30 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 fragobj.setArguments(bundle);
                 clickToNamePet();
 
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
             case (R.id.dog):
                 bundle.putString("petType", "dog");
                 fragobj.setArguments(bundle);
                 clickToNamePet();
 
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
             case (R.id.fish):
                 bundle.putString("petType", "fish");
                 fragobj.setArguments(bundle);
                 clickToNamePet();
 
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
 
         }
-        mFragmentTransaction.setReorderingAllowed(true);
         mFragmentTransaction.addToBackStack(null);
+        mFragmentTransaction.commit();
+
 
 
     }

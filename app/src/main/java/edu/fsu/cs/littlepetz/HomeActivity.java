@@ -24,15 +24,10 @@ import android.widget.ImageView;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     ViewModel mViewModel;       //ViewModel for petPicker to homeFragment data transmission
     ImageView petImageView;        // for pet pics
-
-    public final static String IMAGE_FRAGMENT_TAG =
-            "imgFragment";
-    public final static String STATS_FRAGMENT_TAG =
-            "statsFragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.intro_fragment_container, new IntroFragment());
+        fragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-    }
 
+    }
 
 
     @Override
