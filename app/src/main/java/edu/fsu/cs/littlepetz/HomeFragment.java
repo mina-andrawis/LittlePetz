@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment {
             String petName = bundle.getString("petName");
 
             //retrieve pet name from bundle and alter the textview in HomeFragment
+            // PROBLEM HERE *******************************************
             nameTextView.setText(petName);
 
             switch (petType){

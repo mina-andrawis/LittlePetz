@@ -105,35 +105,35 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
         switch (v.getId()){
             case (R.id.bunny):
                 bundle.putString("petType", "bunny");
-                fragobj.setArguments(bundle);
                 clickToNamePet();
+                fragobj.setArguments(bundle);
 
                 break;
 
             case (R.id.bird):
                 bundle.putString("petType", "bird");
-                fragobj.setArguments(bundle);
                 clickToNamePet();
+                fragobj.setArguments(bundle);
 
                 break;
 
             case (R.id.cat):
                 bundle.putString("petType", "cat");
-                fragobj.setArguments(bundle);
                 clickToNamePet();
+                fragobj.setArguments(bundle);
 
                 break;
             case (R.id.dog):
                 bundle.putString("petType", "dog");
-                fragobj.setArguments(bundle);
                 clickToNamePet();
+                fragobj.setArguments(bundle);
 
                 break;
             case (R.id.fish):
                 bundle.putString("petType", "fish");
-                fragobj.setArguments(bundle);
                 clickToNamePet();
-                
+                fragobj.setArguments(bundle);
+
                 break;
 
         }
