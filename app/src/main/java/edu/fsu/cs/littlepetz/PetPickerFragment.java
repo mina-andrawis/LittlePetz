@@ -16,11 +16,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.fragment.NavHostFragment;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.net.URI;
@@ -44,6 +47,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             Bundle bundle = new Bundle();
             HomeFragment fragobj = new HomeFragment();
 
+
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("What will you name your pet?");
 
@@ -51,18 +55,18 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
             builder.setView(input);
-            //send name to HomeFragment via bundle
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     name = input.getText().toString();
+                    Log.i("name",name);
 
+                    //send name to HomeFragment via bundle
                     bundle.putString("petName",name);
                     fragobj.setArguments(bundle);
 
                 }
             });
-            
             builder.show();
 
         }
@@ -104,8 +108,6 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 fragobj.setArguments(bundle);
                 clickToNamePet();
 
-                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
 
             case (R.id.bird):
@@ -113,8 +115,6 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 fragobj.setArguments(bundle);
                 clickToNamePet();
 
-                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
 
             case (R.id.cat):
@@ -122,27 +122,23 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 fragobj.setArguments(bundle);
                 clickToNamePet();
 
-                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
             case (R.id.dog):
                 bundle.putString("petType", "dog");
                 fragobj.setArguments(bundle);
                 clickToNamePet();
 
-                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
             case (R.id.fish):
                 bundle.putString("petType", "fish");
                 fragobj.setArguments(bundle);
                 clickToNamePet();
-
-                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
+                
                 break;
 
         }
+        //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+        mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
         mFragmentTransaction.addToBackStack(null);
         mFragmentTransaction.commit();
 

@@ -13,10 +13,11 @@
         android:layout_margin="30dp"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/nameText"
+            android:id="@+id/nameHome"
             android:layout_height="60dp"
             android:layout_width="match_parent"
             android:gravity="center"
+            android:text=" "
             android:textSize="20sp" />
         <ImageView
             android:layout_width="match_parent"

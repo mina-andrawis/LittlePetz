@@ -16,11 +16,14 @@ import androidx.annotation.Nullable;
 
 import androidx.navigation.fragment.NavHostFragment;
 
+import org.w3c.dom.Text;
+
 import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
     ImageView imageView;
+    TextView nameTextView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,13 +39,16 @@ public class HomeFragment extends Fragment {
 
         //create imageview object
         imageView = (ImageView) v.findViewById(R.id.petImage);
+        nameTextView= (TextView) v.findViewById(R.id.nameHome);
 
         Bundle bundle = getArguments();
 
         if(null!=bundle) {
             String petType = bundle.getString("petType");
             String petName = bundle.getString("petName");
-            //Log.d("bundleName",petName);
+
+            //retrieve pet name from bundle and alter the textview in HomeFragment
+            nameTextView.setText(petName);
 
             switch (petType){
                 case ("bunny"):
@@ -62,9 +68,6 @@ public class HomeFragment extends Fragment {
                     break;
             }
 
-            //retrieve pet name from bundle and alter the textview in HomeFragment
-            //TextView nameTextView = (TextView) getActivity().findViewById(R.id.nameText);
-            //nameTextView.setText(petName);
         }
         return v;
 
