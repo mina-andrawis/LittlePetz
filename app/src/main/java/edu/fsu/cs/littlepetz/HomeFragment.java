@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
 
         //create imageview object
         imageView = (ImageView) v.findViewById(R.id.petImage);
-        nameTextView= (TextView) v.findViewById(R.id.nameHome);
+        nameTextView= (TextView) v.findViewById(R.id.homeName);
 
         Bundle bundle = getArguments();
 

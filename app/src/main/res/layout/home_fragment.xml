@@ -13,7 +13,7 @@
         android:layout_margin="30dp"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/nameHome"
+            android:id="@+id/homeName"
             android:layout_height="60dp"
             android:layout_width="match_parent"
             android:gravity="center"
