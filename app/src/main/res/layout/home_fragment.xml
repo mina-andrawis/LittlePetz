@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/babyBlue">
 
     <FrameLayout
         android:id="@+id/pet_container"
@@ -32,7 +33,7 @@
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
         android:layout_weight="1.2"
-        android:background="?android:attr/detailsElementBackground">
+        android:background="@color/babyBlue">
         <TextView
             android:id="@+id/hungerText"
             android:layout_width="88dp"
