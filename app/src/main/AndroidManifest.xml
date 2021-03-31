@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.fsu.cs.littlepetz">
 
+    <permission android:name="com.example.labrown.littlepetz.permission.READ_PERMISSION" />
+    <permission android:name="com.example.labrown.littlepetz.permission.WRITE_PERMISSION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +14,7 @@
         android:theme="@style/Theme.LittlePetz">
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTop">
             android:label="@string/app_name"
             android:theme="@style/Theme.LittlePetz.NoActionBar">
             <intent-filter>
@@ -19,14 +23,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".HomeActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.LittlePetz.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
+        <activity android:name=".SecondActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
+        <provider
+            android:name=".MyContentProvider"
+            android:authorities="@string/authority"
+            android:exported="true"
+            android:readPermission="edu.fsu.cs.littlepetz.permission.READ_PERMISSION"
+            android:writePermission="edu.fsu.cs.littlepetz.permission.WRITE_PERMISSION"/>
+
+        <receiver android:name=".AppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_info" />
+        </receiver>
     </application>
 
 </manifest>

@@ -1,9 +1,5 @@
 package edu.fsu.cs.littlepetz;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,46 +7,30 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.fragment.NavHostFragment;
 
-import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
-    ViewModel mViewModel;       //ViewModel for petPicker to homeFragment data transmission
-    ImageView petImageView;        // for pet pics
-
-    public final static String IMAGE_FRAGMENT_TAG =
-            "imgFragment";
-    public final static String STATS_FRAGMENT_TAG =
-            "statsFragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
+// ***********        setSupportActionBar(toolbar);
 
-
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.intro_fragment_container, new IntroFragment());
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,7 +53,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }
