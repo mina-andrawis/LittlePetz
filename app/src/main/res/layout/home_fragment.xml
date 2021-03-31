@@ -2,28 +2,125 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/babyBlue">
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/pet_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_margin="30dp">
-
+        android:layout_margin="30dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/nameHome"
+            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text=" "
+            android:textSize="20sp" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/petImage"
-            android:src="@drawable/ic_launcher_foreground"
-            android:layout_marginTop="60dp"/>
-    </FrameLayout>
+            android:src="@drawable/ic_launcher_foreground" />
+    </LinearLayout>
 
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/stats_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
-        android:background="?android:attr/detailsElementBackground" />
+        android:layout_marginHorizontal="20dp"
+        android:layout_weight="1.2"
+        android:background="@color/babyBlue">
+
+        <TextView
+            android:id="@+id/hungerText"
+            android:layout_width="88dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="@string/hunger"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/thirstText"
+            android:layout_width="88dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/hungerText"
+            android:gravity="center"
+            android:text="@string/thirst"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/happinessText"
+            android:layout_width="88dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/thirstText"
+            android:gravity="center"
+            android:text="@string/happiness"
+            android:textSize="18sp" />
+
+        <ProgressBar
+            android:id="@+id/hungerBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_toRightOf="@id/hungerText"
+            android:padding="20dp"
+            android:progress="100" />
+
+        <ProgressBar
+            android:id="@+id/thirstBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/hungerBar"
+            android:layout_toRightOf="@id/hungerText"
+            android:padding="20dp"
+            android:progress="100" />
+
+        <ProgressBar
+            android:id="@+id/happinessBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/thirstBar"
+            android:layout_toRightOf="@id/hungerText"
+            android:padding="20dp"
+            android:progress="100" />
+
+
+        <Button
+            android:id="@+id/feedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/happinessText"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:text="feed" />
+
+        <Button
+            android:id="@+id/hydrateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/happinessText"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/feedButton"
+            android:text="hydrate" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/happinessText"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/hydrateButton"
+            android:text="Cuddle" />
+
+    </RelativeLayout>
+
+
 </LinearLayout>
