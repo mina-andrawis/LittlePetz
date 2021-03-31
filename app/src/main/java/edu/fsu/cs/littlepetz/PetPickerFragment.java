@@ -42,7 +42,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
 
         public void clickToNamePet(){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Please Enter a name: ");
+                builder.setTitle("What will you name your pet?");
                 final EditText input = new EditText(getActivity());
                 input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                 builder.setView(input);

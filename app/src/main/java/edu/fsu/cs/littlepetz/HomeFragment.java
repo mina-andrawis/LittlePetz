@@ -61,7 +61,6 @@ public class HomeFragment extends Fragment {
                 case ("fish"):
                     imageView.setImageResource(R.drawable.fish);
                     break;
-
             }
 
         }
