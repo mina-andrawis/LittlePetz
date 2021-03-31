@@ -1,19 +1,25 @@
 package edu.fsu.cs.littlepetz;
 
+import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import java.io.File;
@@ -25,14 +31,36 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction = null;
     Fragment newFragment;
-
+    private String name = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.pet_picker, container, false);
-    }
+        View v =  inflater.inflate(R.layout.pet_picker, container, false);
 
+        return v;    }
+
+        public void clickToNamePet(){
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Please Enter a name: ");
+                final EditText input = new EditText(getActivity());
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+                builder.setView(input);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        name = input.getText().toString();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
+
+        }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -67,39 +95,43 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             case (R.id.bunny):
                 bundle.putString("petType", "bunny");
                 fragobj.setArguments(bundle);
-
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                    clickToNamePet();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
                 break;
 
             case (R.id.bird):
                 bundle.putString("petType", "bird");
                 fragobj.setArguments(bundle);
+                clickToNamePet();
 
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
                 break;
 
             case (R.id.cat):
                 bundle.putString("petType", "cat");
                 fragobj.setArguments(bundle);
+                clickToNamePet();
 
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
                 break;
             case (R.id.dog):
                 bundle.putString("petType", "dog");
                 fragobj.setArguments(bundle);
+                clickToNamePet();
 
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
                 break;
             case (R.id.fish):
                 bundle.putString("petType", "fish");
                 fragobj.setArguments(bundle);
+                clickToNamePet();
 
-                //replace nav_host_fragment (found in content_main) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.nav_host_fragment, fragobj, "HomeFrag").commit();
+                //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
                 break;
 
         }

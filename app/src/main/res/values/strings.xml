@@ -11,11 +11,4 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="Continue">Continue</string>
     <string name="choose_your_companion">Choose your companion!</string>
-    <string name="petname">petName</string>
-    <string name="hunger">Hunger</string>
-    <string name="thirst">Thirst</string>
-    <string name="happiness">Happiness</string>
-    <string name="feed">feed</string>
-    <string name="give_water">Give water</string>
-    <string name="hydrate">Hydrate</string>
 </resources>

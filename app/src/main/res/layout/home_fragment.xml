@@ -2,33 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/babyBlue"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/petTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:text="@string/petname"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        />
 
     <FrameLayout
         android:id="@+id/pet_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_margin="30dp"
-        >
-
+        android:layout_margin="30dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/petImage"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:src="@drawable/ic_launcher_foreground"
+            android:layout_marginTop="60dp"/>
     </FrameLayout>
 
 
@@ -37,96 +25,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.5"
-        android:background="?android:attr/detailsElementBackground" >
-
-
-        <RelativeLayout
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-            <TextView
-                android:id="@+id/hungerText"
-                android:layout_width="88dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:layout_marginLeft="32dp"
-                android:text="@string/hunger"
-                android:textSize="20sp" />
-
-            <ProgressBar
-                android:id="@+id/hungerBar"
-                android:padding="20dp"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:layout_toRightOf="@id/hungerText"
-                android:progress="100"/>
-
-            <TextView
-                android:id="@+id/thirstText"
-                android:layout_width="88dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:layout_marginLeft="32dp"
-                android:text="@string/thirst"
-                android:layout_below="@id/hungerText"
-                android:textSize="20sp" />
-
-            <ProgressBar
-                android:id="@+id/thirstBar"
-                android:padding="20dp"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:layout_toRightOf="@id/thirstText"
-                android:layout_below="@id/hungerBar"
-                android:progress="100"/>
-
-            <TextView
-                android:id="@+id/happinessText"
-                android:layout_width="88dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:layout_marginLeft="32dp"
-                android:text="@string/happiness"
-                android:layout_below="@id/thirstText"
-                android:textSize="18sp" />
-
-            <ProgressBar
-                android:id="@+id/happinessBar"
-                android:padding="20dp"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:layout_toRightOf="@id/happinessText"
-                android:layout_below="@id/thirstBar"
-                android:progress="100"/>
-
-
-            <Button
-                android:id="@+id/feedButton"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/happinessText"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="80dp"
-                android:text="@string/feed" />
-
-            <Button
-                android:id="@+id/hydrateButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/happinessText"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="40dp"
-                android:layout_toRightOf="@id/feedButton"
-                android:text="@string/hydrate" />
-
-
-
-        </RelativeLayout>
-    </FrameLayout>
-
+        android:background="?android:attr/detailsElementBackground" />
 </LinearLayout>
