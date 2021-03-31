@@ -25,12 +25,12 @@ public class IntroFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.continue_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.intro_fragment_container, new IntroFragment());
+                fragmentTransaction.replace(R.id.intro_fragment_container, new PetPickerFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
