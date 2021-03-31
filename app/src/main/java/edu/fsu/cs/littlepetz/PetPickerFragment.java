@@ -86,6 +86,8 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
 
         //Log.i("ID", String.valueOf(v.getId()));
 
+        getActivity().setContentView(R.layout.activity_home);
+
         mFragmentTransaction = getFragmentManager().beginTransaction();
 
         Bundle bundle = new Bundle();
@@ -97,7 +99,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 fragobj.setArguments(bundle);
                     clickToNamePet();
                 //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
 
             case (R.id.bird):
@@ -106,7 +108,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 clickToNamePet();
 
                 //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
 
             case (R.id.cat):
@@ -115,7 +117,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 clickToNamePet();
 
                 //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
             case (R.id.dog):
                 bundle.putString("petType", "dog");
@@ -123,7 +125,7 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 clickToNamePet();
 
                 //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
             case (R.id.fish):
                 bundle.putString("petType", "fish");
@@ -131,12 +133,13 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 clickToNamePet();
 
                 //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
-                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag").commit();
+                mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
 
         }
-        mFragmentTransaction.setReorderingAllowed(true);
         mFragmentTransaction.addToBackStack(null);
+        mFragmentTransaction.commit();
+
 
 
     }
