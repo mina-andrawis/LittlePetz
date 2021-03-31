@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,29 +41,30 @@ public class HomeFragment extends Fragment {
 
         if(null!=bundle) {
             String petType = bundle.getString("petType");
+            String petName = bundle.getString("petName");
+            //Log.d("bundleName",petName);
 
             switch (petType){
                 case ("bunny"):
                 imageView.setImageResource(R.drawable.bunny);
                 break;
-
                 case ("bird"):
                     imageView.setImageResource(R.drawable.bird);
                     break;
-
                 case ("cat"):
                     imageView.setImageResource(R.drawable.cat);
                     break;
-
                 case ("dog"):
                     imageView.setImageResource(R.drawable.dog);
                     break;
-
                 case ("fish"):
                     imageView.setImageResource(R.drawable.fish);
                     break;
             }
 
+            //retrieve pet name from bundle and alter the textview in HomeFragment
+            //TextView nameTextView = (TextView) getActivity().findViewById(R.id.nameText);
+            //nameTextView.setText(petName);
         }
         return v;
 
@@ -70,6 +72,7 @@ public class HomeFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
     }
 

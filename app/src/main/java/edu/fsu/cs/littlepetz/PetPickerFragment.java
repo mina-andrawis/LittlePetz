@@ -41,24 +41,29 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
         return v;    }
 
         public void clickToNamePet(){
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("What will you name your pet?");
-                final EditText input = new EditText(getActivity());
-                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-                builder.setView(input);
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        name = input.getText().toString();
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                builder.show();
+            Bundle bundle = new Bundle();
+            HomeFragment fragobj = new HomeFragment();
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("What will you name your pet?");
+
+            final EditText input = new EditText(getActivity());
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+
+            builder.setView(input);
+            //send name to HomeFragment via bundle
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    name = input.getText().toString();
+
+                    bundle.putString("petName",name);
+                    fragobj.setArguments(bundle);
+
+                }
+            });
+            
+            builder.show();
 
         }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -97,7 +102,8 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             case (R.id.bunny):
                 bundle.putString("petType", "bunny");
                 fragobj.setArguments(bundle);
-                    clickToNamePet();
+                clickToNamePet();
+
                 //replace fragment_container (found in HomeActivity) with the newly created fragobj with arguements then commit
                 mFragmentTransaction.replace(R.id.fragment_container, fragobj, "HomeFrag");
                 break;
