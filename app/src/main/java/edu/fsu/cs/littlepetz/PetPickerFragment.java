@@ -81,7 +81,6 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                 public void onClick(DialogInterface dialog, int which) {
                     name = input.getText().toString();
 
-
                     bundle.putString("petType",b);
                     bundle.putString("petName",name);
 
