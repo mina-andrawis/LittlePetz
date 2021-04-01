@@ -30,25 +30,30 @@ import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
 
-    TextView petName;
-    ImageView petType;
+    SharedPreferences sharedpreferences;
     ProgressBar hungerBar, thirstBar, happinessBar;
+    TextView nameView;
+    String petType;
 
     public static final String MYPREF = "MyPref";
-
-    SharedPreferences sharedpreferences;
-
     public static final String PET_NAME = "petName";
     public static final String PET_TYPE = "petType";
-
     public static final String HUNGER_LEVEL = "hungerLevel";
     public static final String THIRST_LEVEL = "thirstLevel";
     public static final String HAPPINESS_LEVEL = "happinessLevel";
+
+    SharedPreferences mPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // initialize prefrence and retrieve UI elements as objects
+        mPrefs = getSharedPreferences(HomeActivity.MYPREF,0);
+        nameView = findViewById(R.id.homeName);
+
+        nameView.setText(mPrefs.getString(HomeActivity.PET_NAME, ""));
 
         //replace container with homefragment
         FragmentManager fragmentManager = getFragmentManager();
@@ -56,6 +61,7 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
 
 
     }

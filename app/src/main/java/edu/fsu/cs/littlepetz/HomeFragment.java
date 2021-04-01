@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,8 +26,11 @@ import java.util.Objects;
 public class HomeFragment extends Fragment {
 
     ImageView imageView;
-    TextView nameTextView;
+    TextView nameView;
     public static final String MYPREF = "MyPref";
+
+    ProgressBar happinessBar,thirstBar,hungerBar;
+
 
 
     @Override
@@ -41,9 +45,14 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.home_fragment, container, false);
 
-        //create imageview object
+        //create UI objects
         imageView = (ImageView) v.findViewById(R.id.petImage);
-        nameTextView = (TextView) v.findViewById(R.id.homeName);
+        nameView = (TextView) v.findViewById(R.id.homeName);
+
+        happinessBar = (ProgressBar) v.findViewById(R.id.happinessBar);
+        hungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
+        thirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
+
 
         Bundle bundle = getArguments();
 
@@ -52,7 +61,7 @@ public class HomeFragment extends Fragment {
             String petName = bundle.getString("petName");
 
             //retrieve pet name from bundle and alter the textview in HomeFragment
-            nameTextView.setText(petName);
+            nameView.setText(petName);
 
             switch (petType) {
                 case ("bunny"):
@@ -76,6 +85,13 @@ public class HomeFragment extends Fragment {
             // already picked a pet
             SharedPreferences.Editor editor = getActivity().getSharedPreferences(MYPREF, 0).edit();
             editor.putString(HomeActivity.PET_NAME, petName);
+
+            //insert rest of data to be retrieved in HomeActivity to reinitialize HomeFragment
+            editor.putString(HomeActivity.PET_TYPE,petType);
+            editor.putInt(HomeActivity.HUNGER_LEVEL,hungerBar.getProgress());
+            editor.putInt(HomeActivity.THIRST_LEVEL,thirstBar.getProgress());
+            editor.putInt(HomeActivity.HAPPINESS_LEVEL,happinessBar.getProgress());
+
             editor.apply();
 
         }

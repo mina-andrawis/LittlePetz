@@ -28,7 +28,7 @@ import android.widget.ImageView;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    
+
     String petName = "";
 
     @Override
@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+
+
 
         }
 

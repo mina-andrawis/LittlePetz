@@ -100,9 +100,6 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             });
             builder.show();
 
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(HomeActivity.MYPREF, 0);
-        sharedPreferences.getString(HomeActivity.PET_NAME,name);
-
         }
 
     // onClick lister for pets in pet pikcer fragment
