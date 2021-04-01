@@ -72,6 +72,8 @@ public class HomeActivity extends AppCompatActivity {
         editor.putInt(HAPPINESS_LEVEL,happinessLevel);
         editor.apply();
 
+        Log.d("PREF",petName.getText().toString());
+
 
 
 
