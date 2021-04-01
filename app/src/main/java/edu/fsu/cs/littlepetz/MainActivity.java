@@ -28,12 +28,7 @@ import android.widget.ImageView;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
-    public final static String IMAGE_FRAGMENT_TAG =
-            "imgFragment";
-    public final static String STATS_FRAGMENT_TAG =
-            "statsFragment";
-
+    
     String petName = "";
 
     @Override
@@ -41,12 +36,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        //SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-
         SharedPreferences mPrefs = getSharedPreferences(HomeActivity.MYPREF,0);
         petName = mPrefs.getString(HomeActivity.PET_NAME, "");
-
-        //Log.d("petName", petName);
 
         if (petName.equals(""))
         {
@@ -72,10 +63,6 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.commit();
 
         }
-
-
-
-
 
 
     }
