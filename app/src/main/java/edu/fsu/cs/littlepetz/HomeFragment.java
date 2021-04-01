@@ -2,6 +2,7 @@ package edu.fsu.cs.littlepetz;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,10 +21,13 @@ import org.w3c.dom.Text;
 
 import java.util.Objects;
 
+
 public class HomeFragment extends Fragment {
 
     ImageView imageView;
     TextView nameTextView;
+    public static final String MYPREF = "MyPref";
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,22 +43,21 @@ public class HomeFragment extends Fragment {
 
         //create imageview object
         imageView = (ImageView) v.findViewById(R.id.petImage);
-        nameTextView= (TextView) v.findViewById(R.id.homeName);
+        nameTextView = (TextView) v.findViewById(R.id.homeName);
 
         Bundle bundle = getArguments();
 
-        if(null!=bundle) {
+        if (null != bundle) {
             String petType = bundle.getString("petType");
             String petName = bundle.getString("petName");
 
             //retrieve pet name from bundle and alter the textview in HomeFragment
-            // PROBLEM HERE *******************************************
             nameTextView.setText(petName);
 
-            switch (petType){
+            switch (petType) {
                 case ("bunny"):
-                imageView.setImageResource(R.drawable.bunny);
-                break;
+                    imageView.setImageResource(R.drawable.bunny);
+                    break;
                 case ("bird"):
                     imageView.setImageResource(R.drawable.bird);
                     break;
@@ -69,9 +72,14 @@ public class HomeFragment extends Fragment {
                     break;
             }
 
+            //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
+            // already picked a pet
+            SharedPreferences.Editor editor = getActivity().getSharedPreferences(MYPREF, 0).edit();
+            editor.putString(HomeActivity.PET_NAME, petName);
+            editor.apply();
+
         }
         return v;
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -79,7 +87,4 @@ public class HomeFragment extends Fragment {
 
 
     }
-
-
-
 }

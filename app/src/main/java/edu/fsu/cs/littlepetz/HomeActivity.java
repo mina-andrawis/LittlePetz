@@ -2,6 +2,7 @@ package edu.fsu.cs.littlepetz;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -33,7 +34,10 @@ public class HomeActivity extends AppCompatActivity {
     ImageView petType;
     ProgressBar hungerBar, thirstBar, happinessBar;
 
-    public static final String MYPREF = "MyPref" ;
+    public static final String MYPREF = "MyPref";
+
+    SharedPreferences sharedpreferences;
+
     public static final String PET_NAME = "petName";
     public static final String PET_TYPE = "petType";
 
@@ -52,30 +56,6 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-
-
-        petName = (TextView) findViewById(R.id.homeName);
-        // petType = ... ? NEED TO RETRIEVE SOMEHOW
-        hungerBar = (ProgressBar) findViewById(R.id.hungerBar);
-        thirstBar = (ProgressBar) findViewById(R.id.thirstBar);
-        happinessBar = (ProgressBar) findViewById(R.id.happinessBar);
-
-        int hungerLevel = hungerBar.getProgress();
-        int thirstLevel = thirstBar.getProgress();
-        int happinessLevel = happinessBar.getProgress();
-
-
-        SharedPreferences.Editor editor = getSharedPreferences(MYPREF, MODE_PRIVATE).edit();
-        editor.putString(PET_NAME,petName.getText().toString());
-        editor.putInt(HUNGER_LEVEL,hungerLevel);
-        editor.putInt(THIRST_LEVEL,thirstLevel);
-        editor.putInt(HAPPINESS_LEVEL,happinessLevel);
-        editor.apply();
-
-        Log.d("PREF",petName.getText().toString());
-
-
-
 
 
     }

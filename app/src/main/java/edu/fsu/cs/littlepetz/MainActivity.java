@@ -2,6 +2,7 @@ package edu.fsu.cs.littlepetz;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModel;
 //import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 
@@ -32,17 +34,21 @@ public class MainActivity extends AppCompatActivity {
     public final static String STATS_FRAGMENT_TAG =
             "statsFragment";
 
-    String petName;
+    String petName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        SharedPreferences sharedPreferences = getSharedPreferences(HomeActivity.MYPREF, 0);
-        sharedPreferences.getString(HomeActivity.PET_NAME,petName);
+        //SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 
-        if (petName == null)
+        SharedPreferences mPrefs = getSharedPreferences(HomeActivity.MYPREF,0);
+        petName = mPrefs.getString(HomeActivity.PET_NAME, "");
+
+        //Log.d("petName", petName);
+
+        if (petName.equals(""))
         {
             setContentView(R.layout.activity_main);
             Toolbar toolbar = findViewById(R.id.toolbar);
