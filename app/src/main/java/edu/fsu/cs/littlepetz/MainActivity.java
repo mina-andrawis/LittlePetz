@@ -3,6 +3,7 @@ package edu.fsu.cs.littlepetz;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -31,25 +32,41 @@ public class MainActivity extends AppCompatActivity {
     public final static String STATS_FRAGMENT_TAG =
             "statsFragment";
 
+    String petName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
+        SharedPreferences sharedPreferences = getSharedPreferences(HomeActivity.MYPREF, 0);
+        sharedPreferences.getString(HomeActivity.PET_NAME,petName);
+
+        if (petName == null)
+        {
+            setContentView(R.layout.activity_main);
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
 
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.intro_fragment_container, new IntroFragment());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
+        else
+        {
+            setContentView(R.layout.activity_home);
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
+        }
 
-
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.intro_fragment_container, new IntroFragment());
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
 
 
 

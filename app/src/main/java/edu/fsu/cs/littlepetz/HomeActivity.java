@@ -41,8 +41,6 @@ public class HomeActivity extends AppCompatActivity {
     public static final String THIRST_LEVEL = "thirstLevel";
     public static final String HAPPINESS_LEVEL = "happinessLevel";
 
-    SharedPreferences sharedpreferences;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +64,9 @@ public class HomeActivity extends AppCompatActivity {
         int thirstLevel = thirstBar.getProgress();
         int happinessLevel = happinessBar.getProgress();
 
+
         SharedPreferences.Editor editor = getSharedPreferences(MYPREF, MODE_PRIVATE).edit();
+        editor.putString(PET_NAME,petName.getText().toString());
         editor.putInt(HUNGER_LEVEL,hungerLevel);
         editor.putInt(THIRST_LEVEL,thirstLevel);
         editor.putInt(HAPPINESS_LEVEL,happinessLevel);
