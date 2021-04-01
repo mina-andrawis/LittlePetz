@@ -26,9 +26,6 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    ViewModel mViewModel;       //ViewModel for petPicker to homeFragment data transmission
-    ImageView petImageView;        // for pet pics
-
     public final static String IMAGE_FRAGMENT_TAG =
             "imgFragment";
     public final static String STATS_FRAGMENT_TAG =
@@ -37,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.intro_fragment_container, new IntroFragment());
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
+
+
+
+
     }
 
 

@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
     public static final String PET_TYPE = "petType";
 
     public static final String HUNGER_LEVEL = "hungerLevel";
-    public static final String THIRST_LVEL = "thirstLevel";
+    public static final String THIRST_LEVEL = "thirstLevel";
     public static final String HAPPINESS_LEVEL = "happinessLevel";
 
     SharedPreferences sharedpreferences;
@@ -57,12 +57,23 @@ public class HomeActivity extends AppCompatActivity {
 
 
         petName = (TextView) findViewById(R.id.homeName);
-        // petType = ... ?
+        // petType = ... ? NEED TO RETRIEVE SOMEHOW
         hungerBar = (ProgressBar) findViewById(R.id.hungerBar);
         thirstBar = (ProgressBar) findViewById(R.id.thirstBar);
         happinessBar = (ProgressBar) findViewById(R.id.happinessBar);
 
-        
+        int hungerLevel = hungerBar.getProgress();
+        int thirstLevel = thirstBar.getProgress();
+        int happinessLevel = happinessBar.getProgress();
+
+        SharedPreferences.Editor editor = getSharedPreferences(MYPREF, MODE_PRIVATE).edit();
+        editor.putInt(HUNGER_LEVEL,hungerLevel);
+        editor.putInt(THIRST_LEVEL,thirstLevel);
+        editor.putInt(HAPPINESS_LEVEL,happinessLevel);
+        editor.apply();
+
+
+
 
 
     }
