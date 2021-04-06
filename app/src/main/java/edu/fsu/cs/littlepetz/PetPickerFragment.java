@@ -94,8 +94,6 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                     mFragmentTransaction.addToBackStack(null);
                     mFragmentTransaction.commit();
 
-
-
                 }
             });
             builder.show();

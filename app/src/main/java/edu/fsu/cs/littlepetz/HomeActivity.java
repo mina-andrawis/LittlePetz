@@ -50,10 +50,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         // initialize prefrence and retrieve UI elements as objects
-        mPrefs = getSharedPreferences(HomeActivity.MYPREF,0);
-        nameView = findViewById(R.id.homeName);
-
-        nameView.setText(mPrefs.getString(HomeActivity.PET_NAME, ""));
 
         //replace container with homefragment
         FragmentManager fragmentManager = getFragmentManager();

@@ -32,7 +32,6 @@ public class HomeFragment extends Fragment {
     ProgressBar happinessBar,thirstBar,hungerBar;
 
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +82,8 @@ public class HomeFragment extends Fragment {
 
             //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
             // already picked a pet
-            SharedPreferences.Editor editor = getActivity().getSharedPreferences(MYPREF, 0).edit();
+            SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
+            SharedPreferences.Editor editor = prefs.edit();
             editor.putString(HomeActivity.PET_NAME, petName);
 
             //insert rest of data to be retrieved in HomeActivity to reinitialize HomeFragment
@@ -94,12 +94,26 @@ public class HomeFragment extends Fragment {
 
             editor.apply();
 
+
+
         }
         return v;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        nameView = view.findViewById(R.id.homeName);
+        imageView = (ImageView) view.findViewById(R.id.petImage);
+
+        happinessBar = (ProgressBar) view.findViewById(R.id.happinessBar);
+        hungerBar = (ProgressBar) view.findViewById(R.id.hungerBar);
+        thirstBar = (ProgressBar) view.findViewById(R.id.thirstBar);
+
+        SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
+        prefs = getActivity().getSharedPreferences(HomeActivity.MYPREF,0);
+
+        nameView.setText(prefs.getString(HomeActivity.PET_NAME, ""));
 
 
     }
