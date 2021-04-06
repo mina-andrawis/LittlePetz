@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -93,8 +94,6 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
                     mFragmentTransaction.addToBackStack(null);
                     mFragmentTransaction.commit();
 
-
-
                 }
             });
             builder.show();
@@ -115,38 +114,28 @@ public class PetPickerFragment extends Fragment implements View.OnClickListener 
             case (R.id.bunny):
                 animalType = "bunny";
                 clickToNamePet(animalType);
-
-
                 break;
 
             case (R.id.bird):
                 animalType = "bird";
                 clickToNamePet(animalType);
-
-
                 break;
 
             case (R.id.cat):
                 animalType = "cat";
                 clickToNamePet(animalType);
-
-
                 break;
+
             case (R.id.dog):
                 animalType = "dog";
                 clickToNamePet(animalType);
-
-
                 break;
+
             case (R.id.fish):
                 animalType = "fish";
                 clickToNamePet(animalType);
-
                 break;
-
         }
-
-
 
 
 
