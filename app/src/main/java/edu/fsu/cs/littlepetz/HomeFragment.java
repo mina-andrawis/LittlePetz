@@ -62,23 +62,7 @@ public class HomeFragment extends Fragment {
             //retrieve pet name from bundle and alter the textview in HomeFragment
             nameView.setText(petName);
 
-            switch (petType) {
-                case ("bunny"):
-                    imageView.setImageResource(R.drawable.bunny);
-                    break;
-                case ("bird"):
-                    imageView.setImageResource(R.drawable.bird);
-                    break;
-                case ("cat"):
-                    imageView.setImageResource(R.drawable.cat);
-                    break;
-                case ("dog"):
-                    imageView.setImageResource(R.drawable.dog);
-                    break;
-                case ("fish"):
-                    imageView.setImageResource(R.drawable.fish);
-                    break;
-            }
+            petImagePicker(petType);
 
             //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
             // already picked a pet
@@ -110,11 +94,38 @@ public class HomeFragment extends Fragment {
         hungerBar = (ProgressBar) view.findViewById(R.id.hungerBar);
         thirstBar = (ProgressBar) view.findViewById(R.id.thirstBar);
 
-        SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
-        prefs = getActivity().getSharedPreferences(HomeActivity.MYPREF,0);
+        SharedPreferences prefs = getActivity().getSharedPreferences(HomeActivity.MYPREF,0);
 
         nameView.setText(prefs.getString(HomeActivity.PET_NAME, ""));
-
+        petImagePicker(prefs.getString(HomeActivity.PET_TYPE,""));
+        happinessBar.setProgress(prefs.getInt(HomeActivity.HAPPINESS_LEVEL,0));
+        hungerBar.setProgress(prefs.getInt(HomeActivity.HUNGER_LEVEL,0));
+        thirstBar.setProgress(prefs.getInt(HomeActivity.THIRST_LEVEL,0));
 
     }
+
+    public void petImagePicker(String petType)
+    {
+        switch (petType) {
+            case ("bunny"):
+                imageView.setImageResource(R.drawable.bunny);
+                break;
+            case ("bird"):
+                imageView.setImageResource(R.drawable.bird);
+                break;
+            case ("cat"):
+                imageView.setImageResource(R.drawable.cat);
+                break;
+            case ("dog"):
+                imageView.setImageResource(R.drawable.dog);
+                break;
+            case ("fish"):
+                imageView.setImageResource(R.drawable.fish);
+                break;
+        }
+
+    }
+
+
 }
+
