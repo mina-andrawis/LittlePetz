@@ -69,7 +69,7 @@
             android:layout_height="60dp"
             android:layout_toRightOf="@id/hungerText"
             android:padding="20dp"
-            android:progress="100" />
+            android:max="100" />
 
         <ProgressBar
             android:id="@+id/thirstBar"
@@ -79,7 +79,7 @@
             android:layout_below="@id/hungerBar"
             android:layout_toRightOf="@id/hungerText"
             android:padding="20dp"
-            android:progress="100" />
+            android:max="100" />
 
         <ProgressBar
             android:id="@+id/happinessBar"
@@ -89,7 +89,7 @@
             android:layout_below="@id/thirstBar"
             android:layout_toRightOf="@id/hungerText"
             android:padding="20dp"
-            android:progress="100" />
+            android:max="100" />
 
 
         <Button
@@ -112,6 +112,7 @@
             android:text="hydrate" />
 
         <Button
+            android:id="@+id/happyButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/happinessText"
