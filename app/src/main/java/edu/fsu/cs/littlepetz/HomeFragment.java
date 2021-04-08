@@ -2,6 +2,7 @@ package edu.fsu.cs.littlepetz;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,9 +23,11 @@ import org.w3c.dom.Text;
 
 import java.util.Objects;
 
+
 public class HomeFragment extends Fragment {
 
     ImageView imageView;
+ 
     TextView nameTextView;
     ProgressBar HungerBar;
     ProgressBar ThirstBar;
@@ -32,10 +35,14 @@ public class HomeFragment extends Fragment {
     Button feed;
     Button water;
     Button pet;
-
+    public static final String MYPREF = "MyPref";
     int hungerStatus = 0;
     int thirstStatus = 0;
     int happyStatus = 0;
+
+   
+
+ 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,24 +57,50 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.home_fragment, container, false);
 
+ 
 
 
 
 
         //create imageview object
+
+        //create UI objects
+ 
         imageView = (ImageView) v.findViewById(R.id.petImage);
-        nameTextView= (TextView) v.findViewById(R.id.homeName);
+        nameTextView = (TextView) v.findViewById(R.id.homeName);
+
+        HappyBar = (ProgressBar) v.findViewById(R.id.happinessBar);
+        HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
+        thirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
+
 
         Bundle bundle = getArguments();
 
-        if(null!=bundle) {
+        if (null != bundle) {
             String petType = bundle.getString("petType");
             String petName = bundle.getString("petName");
 
             //retrieve pet name from bundle and alter the textview in HomeFragment
-            // PROBLEM HERE *******************************************
             nameTextView.setText(petName);
 
+            petImagePicker(petType);
+
+            //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
+            // already picked a pet
+            SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString(HomeActivity.PET_NAME, petName);
+
+            //insert rest of data to be retrieved in HomeActivity to reinitialize HomeFragment
+            editor.putString(HomeActivity.PET_TYPE,petType);
+            editor.putInt(HomeActivity.HUNGER_LEVEL,hungerBar.getProgress());
+            editor.putInt(HomeActivity.THIRST_LEVEL,thirstBar.getProgress());
+            editor.putInt(HomeActivity.HAPPINESS_LEVEL,happinessBar.getProgress());
+
+            editor.apply();
+
+
+ 
             //Figuring out the Progress Bar------------------------------
             HungerBar=(ProgressBar) v.findViewById(R.id.hungerBar);
             ThirstBar=(ProgressBar) v.findViewById(R.id.thirstBar);
@@ -127,10 +160,10 @@ public class HomeFragment extends Fragment {
                     imageView.setImageResource(R.drawable.fish);
                     break;
             }
+ 
 
         }
         return v;
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -139,9 +172,45 @@ public class HomeFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
+        nameTextView = view.findViewById(R.id.homeName);
+        imageView = (ImageView) view.findViewById(R.id.petImage);
+
+        HappyBar = (ProgressBar) view.findViewById(R.id.happinessBar);
+        HungerBar = (ProgressBar) view.findViewById(R.id.hungerBar);
+        ThirstBar = (ProgressBar) view.findViewById(R.id.thirstBar);
+
+        SharedPreferences prefs = getActivity().getSharedPreferences(HomeActivity.MYPREF,0);
+
+        nameTextView.setText(prefs.getString(HomeActivity.PET_NAME, ""));
+        petImagePicker(prefs.getString(HomeActivity.PET_TYPE,""));
+        HappyBar.setProgress(prefs.getInt(HomeActivity.HAPPINESS_LEVEL,0));
+        HungerBar.setProgress(prefs.getInt(HomeActivity.HUNGER_LEVEL,0));
+        ThirstBar.setProgress(prefs.getInt(HomeActivity.THIRST_LEVEL,0));
+
+    }
+
+    public void petImagePicker(String petType)
+    {
+        switch (petType) {
+            case ("bunny"):
+                imageView.setImageResource(R.drawable.bunny);
+                break;
+            case ("bird"):
+                imageView.setImageResource(R.drawable.bird);
+                break;
+            case ("cat"):
+                imageView.setImageResource(R.drawable.cat);
+                break;
+            case ("dog"):
+                imageView.setImageResource(R.drawable.dog);
+                break;
+            case ("fish"):
+                imageView.setImageResource(R.drawable.fish);
+                break;
+        }
 
     }
 
 
-
 }
+
