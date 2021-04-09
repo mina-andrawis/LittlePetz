@@ -71,7 +71,7 @@ public class HomeFragment extends Fragment {
 
         HappyBar = (ProgressBar) v.findViewById(R.id.happinessBar);
         HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
-        thirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
+        ThirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
 
 
         Bundle bundle = getArguments();
@@ -93,9 +93,9 @@ public class HomeFragment extends Fragment {
 
             //insert rest of data to be retrieved in HomeActivity to reinitialize HomeFragment
             editor.putString(HomeActivity.PET_TYPE,petType);
-            editor.putInt(HomeActivity.HUNGER_LEVEL,hungerBar.getProgress());
-            editor.putInt(HomeActivity.THIRST_LEVEL,thirstBar.getProgress());
-            editor.putInt(HomeActivity.HAPPINESS_LEVEL,happinessBar.getProgress());
+            editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress());
+            editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());
+            editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress());
 
             editor.apply();
 
