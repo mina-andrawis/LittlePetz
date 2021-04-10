@@ -87,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_friends) {
+            Intent myIntent = new Intent(this, FriendsListActivity.class);
 
+            startActivity(myIntent);
 
             return true;
         }
