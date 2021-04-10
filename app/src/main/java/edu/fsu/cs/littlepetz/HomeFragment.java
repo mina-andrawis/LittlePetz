@@ -40,9 +40,6 @@ public class HomeFragment extends Fragment {
     int thirstStatus = 0;
     int happyStatus = 0;
 
-   
-
- 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,43 +61,6 @@ public class HomeFragment extends Fragment {
  
         imageView = (ImageView) v.findViewById(R.id.petImage);
         nameTextView = (TextView) v.findViewById(R.id.homeName);
-
-        HappyBar = (ProgressBar) v.findViewById(R.id.happinessBar);
-        HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
-        ThirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
-
-
-        Bundle bundle = getArguments();
-
-        if (null != bundle) {
-            String petType = bundle.getString("petType");
-            String petName = bundle.getString("petName");
-
-            //retrieve pet name from bundle and alter the textview in HomeFragment
-            nameTextView.setText(petName);
-
-            petImagePicker(petType);
-
-           //Figuring out the Progress Bar------------------------------
-
-
-            //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
-            // already picked a pet
-            SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(HomeActivity.PET_NAME, petName);
-
-            //insert rest of data to be retrieved in HomeActivity to reinitialize HomeFragment
-            editor.putString(HomeActivity.PET_TYPE,petType);
-            editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress());
-            editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());
-            editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress());
-
-            editor.apply();
-
-        }
-
-
 
         //Figuring out the Progress Bar------------------------------
         HungerBar=(ProgressBar) v.findViewById(R.id.hungerBar);
@@ -142,6 +102,38 @@ public class HomeFragment extends Fragment {
                 HappyBar.setProgress(happyStatus);
             }
         });
+
+        Bundle bundle = getArguments();
+
+        SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
+
+        // if the bundle is not null (picked pet from MainFragment)
+        if (null != bundle) {
+            String petType = bundle.getString("petType");
+            String petName = bundle.getString("petName");
+
+
+            //retrieve pet name from bundle and alter the textview in HomeFragment
+            nameTextView.setText(petName);
+            petImagePicker(petType);
+
+            //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
+            // already picked a pet
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString(HomeActivity.PET_NAME, petName);
+
+            //insert rest of data to be retrieved in HomeActivity to reinitialize HomeFragment
+            editor.putString(HomeActivity.PET_TYPE,petType);
+            editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress());
+            editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());
+            editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress());
+
+            editor.apply();
+
+        }
+
+
+
         
         return v;
     }
