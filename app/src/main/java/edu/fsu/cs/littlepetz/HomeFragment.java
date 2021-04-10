@@ -117,6 +117,9 @@ public class HomeFragment extends Fragment {
             nameTextView.setText(petName);
             petImagePicker(petType);
 
+           //Figuring out the Progress Bar------------------------------
+
+
             //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
             // already picked a pet
             SharedPreferences.Editor editor = prefs.edit();
@@ -132,9 +135,6 @@ public class HomeFragment extends Fragment {
 
         }
 
-
-
-        
         return v;
     }
 
