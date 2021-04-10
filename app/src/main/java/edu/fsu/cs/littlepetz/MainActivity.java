@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             setContentView(R.layout.activity_home);
+
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             Log.i("toolbar", String.valueOf(toolbar));
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
-            
+
         }
 
     }
@@ -86,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_friends) {
+
+
             return true;
         }
 

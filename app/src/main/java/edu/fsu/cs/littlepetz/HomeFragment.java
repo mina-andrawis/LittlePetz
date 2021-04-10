@@ -107,6 +107,7 @@ public class HomeFragment extends Fragment {
                 if (hungerStatus <= 100) {
                     hungerStatus += 25;
                     HungerBar.setProgress(hungerStatus);
+                    Log.i("feed", String.valueOf(hungerStatus));
                 }
                 if(hungerStatus > 100){
                     hungerStatus = 0;
@@ -137,8 +138,6 @@ public class HomeFragment extends Fragment {
                 }
             });
            //Figuring out the Progress Bar------------------------------
-
- 
 
         }
         return v;
