@@ -57,9 +57,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.home_fragment, container, false);
 
- 
-
-
 
 
         //create imageview object
@@ -71,7 +68,7 @@ public class HomeFragment extends Fragment {
 
         HappyBar = (ProgressBar) v.findViewById(R.id.happinessBar);
         HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
-        thirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
+        ThirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
 
 
         Bundle bundle = getArguments();
@@ -96,16 +93,13 @@ public class HomeFragment extends Fragment {
 
             //insert rest of data to be retrieved in HomeActivity to reinitialize HomeFragment
             editor.putString(HomeActivity.PET_TYPE,petType);
-            editor.putInt(HomeActivity.HUNGER_LEVEL,hungerBar.getProgress());
-            editor.putInt(HomeActivity.THIRST_LEVEL,thirstBar.getProgress());
-            editor.putInt(HomeActivity.HAPPINESS_LEVEL,happinessBar.getProgress());
+            editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress());
+            editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());
+            editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress());
 
             editor.apply();
 
         }
-
-
-<<<<<<< Updated upstream
  
             //Figuring out the Progress Bar------------------------------
             HungerBar=(ProgressBar) v.findViewById(R.id.hungerBar);
@@ -148,71 +142,6 @@ public class HomeFragment extends Fragment {
             });
            //Figuring out the Progress Bar------------------------------
 
-
-            switch (petType){
-                case ("bunny"):
-                imageView.setImageResource(R.drawable.bunny);
-                break;
-                case ("bird"):
-                    imageView.setImageResource(R.drawable.bird);
-                    break;
-                case ("cat"):
-                    imageView.setImageResource(R.drawable.cat);
-                    break;
-                case ("dog"):
-                    imageView.setImageResource(R.drawable.dog);
-                    break;
-                case ("fish"):
-                    imageView.setImageResource(R.drawable.fish);
-                    break;
-            }
- 
-
-        }
-=======
-
-        //Figuring out the Progress Bar------------------------------
-        HungerBar=(ProgressBar) v.findViewById(R.id.hungerBar);
-        ThirstBar=(ProgressBar) v.findViewById(R.id.thirstBar);
-        HappyBar=(ProgressBar) v.findViewById(R.id.happinessBar);
-
-        feed = v.findViewById(R.id.feedButton);
-        feed.setOnClickListener(view -> {
-            if (hungerStatus <= 100) {
-                hungerStatus += 25;
-                HungerBar.setProgress(hungerStatus);
-                Log.i("feed", String.valueOf(hungerStatus));
-            }
-            if(hungerStatus > 100){
-                hungerStatus = 0;
-                HungerBar.setProgress(hungerStatus);
-            }
-        });
-        water = v.findViewById(R.id.hydrateButton);
-        water.setOnClickListener(view -> {
-            if (thirstStatus <= 100) {
-                thirstStatus += 25;
-                ThirstBar.setProgress(thirstStatus);
-            }
-            if(thirstStatus > 100){
-                thirstStatus = 0;
-                ThirstBar.setProgress(thirstStatus);
-            }
-        });
-
-        pet = v.findViewById(R.id.happyButton);
-        pet.setOnClickListener(view -> {
-            if (happyStatus <= 100) {
-                happyStatus += 25;
-                HappyBar.setProgress(happyStatus);
-            }
-            if(happyStatus > 100){
-                happyStatus = 0;
-                HappyBar.setProgress(happyStatus);
-            }
-        });
-        
->>>>>>> Stashed changes
         return v;
     }
 
