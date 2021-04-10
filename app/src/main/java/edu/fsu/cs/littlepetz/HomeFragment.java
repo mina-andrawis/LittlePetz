@@ -57,10 +57,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.home_fragment, container, false);
 
- 
-
-
-
 
         //create imageview object
 
@@ -143,23 +139,7 @@ public class HomeFragment extends Fragment {
            //Figuring out the Progress Bar------------------------------
 
 
-            switch (petType){
-                case ("bunny"):
-                imageView.setImageResource(R.drawable.bunny);
-                break;
-                case ("bird"):
-                    imageView.setImageResource(R.drawable.bird);
-                    break;
-                case ("cat"):
-                    imageView.setImageResource(R.drawable.cat);
-                    break;
-                case ("dog"):
-                    imageView.setImageResource(R.drawable.dog);
-                    break;
-                case ("fish"):
-                    imageView.setImageResource(R.drawable.fish);
-                    break;
-            }
+        petImagePicker(petType);
  
 
         }
