@@ -81,6 +81,9 @@ public class HomeFragment extends Fragment {
 
             petImagePicker(petType);
 
+           //Figuring out the Progress Bar------------------------------
+
+
             //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
             // already picked a pet
             SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
@@ -95,51 +98,51 @@ public class HomeFragment extends Fragment {
 
             editor.apply();
 
-
- 
-            //Figuring out the Progress Bar------------------------------
-            HungerBar=(ProgressBar) v.findViewById(R.id.hungerBar);
-            ThirstBar=(ProgressBar) v.findViewById(R.id.thirstBar);
-            HappyBar=(ProgressBar) v.findViewById(R.id.happinessBar);
-
-            feed = v.findViewById(R.id.feedButton);
-            feed.setOnClickListener(view -> {
-                if (hungerStatus <= 100) {
-                    hungerStatus += 25;
-                    HungerBar.setProgress(hungerStatus);
-                    Log.i("feed", String.valueOf(hungerStatus));
-                }
-                if(hungerStatus > 100){
-                    hungerStatus = 0;
-                    HungerBar.setProgress(hungerStatus);
-                }
-            });
-            water = v.findViewById(R.id.hydrateButton);
-            water.setOnClickListener(view -> {
-                if (thirstStatus <= 100) {
-                    thirstStatus += 25;
-                    ThirstBar.setProgress(thirstStatus);
-                }
-                if(thirstStatus > 100){
-                    thirstStatus = 0;
-                    ThirstBar.setProgress(thirstStatus);
-                }
-            });
-
-            pet = v.findViewById(R.id.happyButton);
-            pet.setOnClickListener(view -> {
-                if (happyStatus <= 100) {
-                    happyStatus += 25;
-                    HappyBar.setProgress(happyStatus);
-                }
-                if(happyStatus > 100){
-                    happyStatus = 0;
-                    HappyBar.setProgress(happyStatus);
-                }
-            });
-           //Figuring out the Progress Bar------------------------------
-
         }
+
+
+
+        //Figuring out the Progress Bar------------------------------
+        HungerBar=(ProgressBar) v.findViewById(R.id.hungerBar);
+        ThirstBar=(ProgressBar) v.findViewById(R.id.thirstBar);
+        HappyBar=(ProgressBar) v.findViewById(R.id.happinessBar);
+
+        feed = v.findViewById(R.id.feedButton);
+        feed.setOnClickListener(view -> {
+            if (hungerStatus <= 100) {
+                hungerStatus += 25;
+                HungerBar.setProgress(hungerStatus);
+                Log.i("feed", String.valueOf(hungerStatus));
+            }
+            if(hungerStatus > 100){
+                hungerStatus = 0;
+                HungerBar.setProgress(hungerStatus);
+            }
+        });
+        water = v.findViewById(R.id.hydrateButton);
+        water.setOnClickListener(view -> {
+            if (thirstStatus <= 100) {
+                thirstStatus += 25;
+                ThirstBar.setProgress(thirstStatus);
+            }
+            if(thirstStatus > 100){
+                thirstStatus = 0;
+                ThirstBar.setProgress(thirstStatus);
+            }
+        });
+
+        pet = v.findViewById(R.id.happyButton);
+        pet.setOnClickListener(view -> {
+            if (happyStatus <= 100) {
+                happyStatus += 25;
+                HappyBar.setProgress(happyStatus);
+            }
+            if(happyStatus > 100){
+                happyStatus = 0;
+                HappyBar.setProgress(happyStatus);
+            }
+        });
+        
         return v;
     }
 
