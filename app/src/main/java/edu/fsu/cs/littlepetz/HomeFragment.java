@@ -40,9 +40,6 @@ public class HomeFragment extends Fragment {
     int thirstStatus = 0;
     int happyStatus = 0;
 
-   
-
- 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,8 +53,6 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.home_fragment, container, false);
-
-
 
         //create imageview object
 
@@ -73,6 +68,10 @@ public class HomeFragment extends Fragment {
 
         Bundle bundle = getArguments();
 
+        SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
+
+        // if the bundle is not null (picked pet from MainFragment)
+
         if (null != bundle) {
             String petType = bundle.getString("petType");
             String petName = bundle.getString("petName");
@@ -82,12 +81,8 @@ public class HomeFragment extends Fragment {
 
             petImagePicker(petType);
 
-           //Figuring out the Progress Bar------------------------------
-
-
             //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
             // already picked a pet
-            SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString(HomeActivity.PET_NAME, petName);
 

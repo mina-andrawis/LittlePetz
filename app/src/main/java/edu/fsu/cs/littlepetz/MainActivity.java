@@ -42,10 +42,6 @@ public class MainActivity extends AppCompatActivity {
         if (petName.equals(""))
         {
             setContentView(R.layout.activity_main);
-            Toolbar toolbar = findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
-
 
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -56,26 +52,29 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             setContentView(R.layout.activity_home);
+
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            Log.i("toolbar", String.valueOf(toolbar));
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
-
-
-
         }
 
-
     }
-
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        Log.i("menu", String.valueOf(R.menu.menu_main));
         return true;
     }
 
@@ -87,7 +86,11 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_friends) {
+            Intent myIntent = new Intent(this, FriendsListActivity.class);
+
+            startActivity(myIntent);
+
             return true;
         }
 
