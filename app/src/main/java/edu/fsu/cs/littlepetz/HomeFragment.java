@@ -138,8 +138,6 @@ public class HomeFragment extends Fragment {
             });
            //Figuring out the Progress Bar------------------------------
 
-
-        petImagePicker(petType);
  
 
         }
