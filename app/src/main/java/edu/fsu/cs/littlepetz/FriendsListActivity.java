@@ -30,7 +30,6 @@ public class FriendsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_friends);
         super.onCreate(savedInstanceState);
 
-
         addFriendButton = (Button) findViewById(R.id.addFriendButton);
         addFriendEdit = (EditText) findViewById(R.id.addFriendEditText);
 
@@ -38,9 +37,6 @@ public class FriendsListActivity extends AppCompatActivity {
     }
 
 
-    public void onClickAddFriend(View view)
-    {
 
-    }
 }
 

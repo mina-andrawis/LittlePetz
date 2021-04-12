@@ -2,6 +2,7 @@ package edu.fsu.cs.littlepetz;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 
@@ -14,6 +15,17 @@ import androidx.annotation.Nullable;
 
 public class FriendProvider extends ContentProvider {
 
+    public final static String DBNAME = "FriendDatabase";
+    public final static String TABLE_NAME = "friendstable";
+    public final static String COLUMN_PETNAME = "petname";
+    public final static String COLUMN_PETTYPE = "pettype";
+
+    public static final String AUTHORITY = "edu.fsu.cs.littlepetz.provider";
+    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
+
+    private static UriMatcher sUriMatcher;
+
+    //private MainDatabaseHelper mOpenHelper;
 
     @Override
     public boolean onCreate() {
