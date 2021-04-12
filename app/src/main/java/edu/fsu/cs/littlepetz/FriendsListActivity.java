@@ -1,6 +1,7 @@
 package edu.fsu.cs.littlepetz;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,4 +14,12 @@ public class FriendsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_friends);
         super.onCreate(savedInstanceState);
     }
+
+
+
+    public void onClickAddFriend(View view)
+    {
+        
+    }
 }
+
