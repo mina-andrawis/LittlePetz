@@ -11,4 +11,8 @@
         android:name="edu.fsu.cs.fragment_container">
 
     </FrameLayout>
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+
 </RelativeLayout>
