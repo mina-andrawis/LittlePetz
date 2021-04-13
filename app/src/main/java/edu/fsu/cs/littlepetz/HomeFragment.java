@@ -1,6 +1,7 @@
 package edu.fsu.cs.littlepetz;
 
 import android.app.Fragment;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -65,6 +66,8 @@ public class HomeFragment extends Fragment {
         HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
         ThirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
 
+        String petType = "";
+        String petName = "";
 
         Bundle bundle = getArguments();
 
@@ -109,9 +112,10 @@ public class HomeFragment extends Fragment {
                 HappyBar.setProgress(happyStatus);
             }
         });
+        //only enters this block when the user first picks pet
         if (null != bundle) {
-            String petType = bundle.getString("petType");
-            String petName = bundle.getString("petName");
+            petType = bundle.getString("petType");
+            petName = bundle.getString("petName");
 
             //retrieve pet name from bundle and alter the textview in HomeFragment
             nameTextView.setText(petName);
@@ -132,10 +136,22 @@ public class HomeFragment extends Fragment {
             editor.apply();
 
         }
- 
-            //Figuring out the Progress Bar------------------------------
 
-           //Figuring out the Progress Bar------------------------------
+        // add name and pet type to content provider
+        Uri mNewUri;
+
+        ContentValues mNewValues = new ContentValues();
+
+        if (!petType.equals("") && !petName.equals(""))
+        {
+            mNewValues.put(FriendProvider.COLUMN_PETNAME, petType.trim());
+            mNewValues.put(FriendProvider.COLUMN_PETNAME, petType.trim());
+
+            Log.i("provider", "inside");
+            mNewUri = getActivity().getContentResolver().insert(
+                    FriendProvider.CONTENT_URI, mNewValues);
+        }
+
 
         return v;
     }
@@ -160,6 +176,8 @@ public class HomeFragment extends Fragment {
         HappyBar.setProgress(prefs.getInt(HomeActivity.HAPPINESS_LEVEL,0));
         HungerBar.setProgress(prefs.getInt(HomeActivity.HUNGER_LEVEL,0));
         ThirstBar.setProgress(prefs.getInt(HomeActivity.THIRST_LEVEL,0));
+
+
 
     }
 

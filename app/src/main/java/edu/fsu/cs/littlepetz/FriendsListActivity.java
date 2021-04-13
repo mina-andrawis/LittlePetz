@@ -7,13 +7,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
-// ADAPTED FROM CONTENT PROVIDER CLASS EXAMPLE //
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class FriendsListActivity extends AppCompatActivity {
 
@@ -21,6 +24,13 @@ public class FriendsListActivity extends AppCompatActivity {
     Button addFriendButton;
 
     EditText addFriendEdit;
+
+    ListView friendsList;
+
+    ArrayList<String> listItems=new ArrayList<String>();
+
+    //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
+    ArrayAdapter<String> adapter;
 
     Cursor mCursor;
 
@@ -32,11 +42,29 @@ public class FriendsListActivity extends AppCompatActivity {
 
         addFriendButton = (Button) findViewById(R.id.addFriendButton);
         addFriendEdit = (EditText) findViewById(R.id.addFriendEditText);
+        friendsList = (ListView) findViewById(R.id.friendsListView);
+
+        adapter=new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                listItems);
+        friendsList.setAdapter(adapter);
+
+
+        addFriendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setlistView();
+
+            }
+        });
 
 
     }
 
-
+    private void setlistView() {
+        listItems.add("TEST STRING");
+        adapter.notifyDataSetChanged();
+    }
 
 }
 

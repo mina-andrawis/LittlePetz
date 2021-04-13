@@ -56,6 +56,7 @@
         android:textSize="50dp"/>
 
     <ListView
+        android:id="@+id/friendsListView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@id/yourFriendsText"

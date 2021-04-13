@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -52,7 +53,18 @@ public class FriendProvider extends ContentProvider {
     @Override
     //This method receives a request from a client. The result is returned as a Cursor object.
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        return null;
+
+        Cursor c = mOpenHelper.getReadableDatabase().query(TABLE_NAME, projection, selection, selectionArgs,
+        null, null, sortOrder);
+
+        //doesnt exist
+        if (c.getCount() == 0)
+        {
+            Toast.makeText(getContext(), "This friend is not found!", Toast.LENGTH_LONG).show();
+            return null;
+        }
+
+        return c;
     }
 
     @Nullable
@@ -107,4 +119,6 @@ public class FriendProvider extends ContentProvider {
         public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
         }
     }
+
+
 }
