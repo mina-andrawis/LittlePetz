@@ -58,12 +58,7 @@ public class FriendProvider extends ContentProvider {
         Cursor c = mOpenHelper.getReadableDatabase().query(TABLE_NAME, projection, selection, selectionArgs,
         null, null, sortOrder);
 
-        //doesnt exist
-        if (c.getCount() == 0)
-        {
-            Toast.makeText(getContext(), "This friend is not found!", Toast.LENGTH_LONG).show();
-            return null;
-        }
+
 
         return c;
     }

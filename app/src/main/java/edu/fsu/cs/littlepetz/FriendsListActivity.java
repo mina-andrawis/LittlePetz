@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,8 +54,16 @@ public class FriendsListActivity extends AppCompatActivity {
         addFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCursor = getContentResolver().query(FriendProvider.CONTENT_URI, null, null, null, null);
+                String [] args = {addFriendEdit.getText().toString()};
+                mCursor = getContentResolver().query(FriendProvider.CONTENT_URI, null,FriendProvider.COLUMN_PETNAME + "=?",  args, null);
 
+                //friends name doesnt exist
+                if (mCursor.getCount() == 0)
+                {
+                    Toast.makeText(FriendsListActivity.this, "This friend is not found!", Toast.LENGTH_LONG).show();
+                }
+
+                //friend found
                 if (mCursor != null) {
                     if (mCursor.getCount() > 0) {
                         mCursor.moveToNext();
@@ -70,7 +79,7 @@ public class FriendsListActivity extends AppCompatActivity {
     }
 
     private void setlistView() {
-        listItems.add(mCursor.getString(1) + ", " + mCursor.getString(2));
+        listItems.add( mCursor.getString(1) + ", " + mCursor.getString(2));
         adapter.notifyDataSetChanged();
     }
 
