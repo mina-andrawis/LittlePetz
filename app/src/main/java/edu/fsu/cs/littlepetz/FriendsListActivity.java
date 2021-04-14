@@ -70,7 +70,7 @@ public class FriendsListActivity extends AppCompatActivity {
     }
 
     private void setlistView() {
-        listItems.add(mCursor.getString(1));
+        listItems.add(mCursor.getString(1) + ", " + mCursor.getString(2));
         adapter.notifyDataSetChanged();
     }
 
