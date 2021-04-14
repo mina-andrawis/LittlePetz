@@ -8,12 +8,42 @@
     <include layout="@layout/toolbar"
         android:id="@+id/toolbar"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Friend:"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/addFriendEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter your friends' pet name here"/>
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addFriendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="Search"/>
+
     <ImageView
         android:id="@+id/friends_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="140dp"
         android:src="@drawable/friends_icon"
         />
     <TextView
@@ -26,6 +56,7 @@
         android:textSize="50dp"/>
 
     <ListView
+        android:id="@+id/friendsListView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@id/yourFriendsText"
