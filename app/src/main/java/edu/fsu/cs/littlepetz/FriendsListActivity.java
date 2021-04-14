@@ -53,7 +53,15 @@ public class FriendsListActivity extends AppCompatActivity {
         addFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setlistView();
+                mCursor = getContentResolver().query(FriendProvider.CONTENT_URI, null, null, null, null);
+
+                if (mCursor != null) {
+                    if (mCursor.getCount() > 0) {
+                        mCursor.moveToNext();
+                        setlistView();
+                    }
+                }
+
 
             }
         });
@@ -62,7 +70,7 @@ public class FriendsListActivity extends AppCompatActivity {
     }
 
     private void setlistView() {
-        listItems.add("TEST STRING");
+        listItems.add(mCursor.getString(1));
         adapter.notifyDataSetChanged();
     }
 

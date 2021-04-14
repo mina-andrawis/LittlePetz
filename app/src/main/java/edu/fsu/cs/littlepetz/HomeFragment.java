@@ -166,8 +166,6 @@ public class HomeFragment extends Fragment {
         }
 
 
-
-
         return v;
     }
 
