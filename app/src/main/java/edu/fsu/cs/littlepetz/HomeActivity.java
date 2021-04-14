@@ -56,7 +56,6 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-        // initialize prefrence and retrieve UI elements as objects
 
         //replace container with homefragment
         FragmentManager fragmentManager = getFragmentManager();

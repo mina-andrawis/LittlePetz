@@ -18,6 +18,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.fragment.NavHostFragment;
 
 import org.w3c.dom.Text;
@@ -49,12 +51,36 @@ public class HomeFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
 
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        // Inflate the layout for this fragment
+        final View v = inflater.inflate(R.layout.home_fragment, container, false);
+
         String petType = "";
         String petName = "";
 
         Bundle bundle = getArguments();
 
         SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
+
+        //create UI objects
+ 
+        imageView = (ImageView) v.findViewById(R.id.petImage);
+        nameTextView = (TextView) v.findViewById(R.id.homeName);
+
+        HappyBar = (ProgressBar) v.findViewById(R.id.happinessBar);
+        HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
+        ThirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
+
+        // if the bundle is not null (picked pet from MainFragment)
+        HungerBar=(ProgressBar) v.findViewById(R.id.hungerBar);
+        ThirstBar=(ProgressBar) v.findViewById(R.id.thirstBar);
+        HappyBar=(ProgressBar) v.findViewById(R.id.happinessBar);
+
 
         //only enters this block when the user first picks pet
         if (null != bundle) {
@@ -65,6 +91,11 @@ public class HomeFragment extends Fragment {
             nameTextView.setText(petName);
 
             petImagePicker(petType);
+
+            Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+            Log.i("toolbar", String.valueOf(toolbar));
+            Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
             //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
             // already picked a pet
@@ -80,34 +111,6 @@ public class HomeFragment extends Fragment {
             editor.apply();
 
         }
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
-        final View v = inflater.inflate(R.layout.home_fragment, container, false);
-
-        //create imageview object
-
-        //create UI objects
- 
-        imageView = (ImageView) v.findViewById(R.id.petImage);
-        nameTextView = (TextView) v.findViewById(R.id.homeName);
-
-        HappyBar = (ProgressBar) v.findViewById(R.id.happinessBar);
-        HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
-        ThirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
-
-
-
-        SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
-
-        // if the bundle is not null (picked pet from MainFragment)
-        HungerBar=(ProgressBar) v.findViewById(R.id.hungerBar);
-        ThirstBar=(ProgressBar) v.findViewById(R.id.thirstBar);
-        HappyBar=(ProgressBar) v.findViewById(R.id.happinessBar);
 
         feed = v.findViewById(R.id.feedButton);
         feed.setOnClickListener(view -> {
