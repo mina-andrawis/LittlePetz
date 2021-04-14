@@ -3,6 +3,7 @@ package edu.fsu.cs.littlepetz;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -79,8 +80,8 @@ public class FriendProvider extends ContentProvider {
     //This method inserts a new record into the content provider.
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
 
-        String pet_type = values.getAsString(COLUMN_PETTYPE).trim();
-        String pet_name = values.getAsString(COLUMN_PETNAME).trim();
+        String pet_type = values.getAsString(COLUMN_PETTYPE);
+        String pet_name = values.getAsString(COLUMN_PETNAME);
 
         if (pet_type.equals(""))
             return null;

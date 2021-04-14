@@ -42,10 +42,44 @@ public class HomeFragment extends Fragment {
     int happyStatus = 0;
 
 
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        String petType = "";
+        String petName = "";
+
+        Bundle bundle = getArguments();
+
+        SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
+
+        //only enters this block when the user first picks pet
+        if (null != bundle) {
+            petType = bundle.getString("petType");
+            petName = bundle.getString("petName");
+
+            //retrieve pet name from bundle and alter the textview in HomeFragment
+            nameTextView.setText(petName);
+
+            petImagePicker(petType);
+
+            //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
+            // already picked a pet
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString(HomeActivity.PET_NAME, petName);
+
+            //insert rest of data to be retrieved in HomeActivity to reinitialize HomeFragment
+            editor.putString(HomeActivity.PET_TYPE,petType);
+            editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress());
+            editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());
+            editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress());
+
+            editor.apply();
+
+        }
 
     }
 
@@ -66,10 +100,7 @@ public class HomeFragment extends Fragment {
         HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
         ThirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
 
-        String petType = "";
-        String petName = "";
 
-        Bundle bundle = getArguments();
 
         SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
 
@@ -112,45 +143,26 @@ public class HomeFragment extends Fragment {
                 HappyBar.setProgress(happyStatus);
             }
         });
-        //only enters this block when the user first picks pet
-        if (null != bundle) {
-            petType = bundle.getString("petType");
-            petName = bundle.getString("petName");
 
-            //retrieve pet name from bundle and alter the textview in HomeFragment
-            nameTextView.setText(petName);
-
-            petImagePicker(petType);
-
-            //create shared preference editor and add pet name to be retrieved by MainActivity to detrmine if a user has
-            // already picked a pet
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(HomeActivity.PET_NAME, petName);
-
-            //insert rest of data to be retrieved in HomeActivity to reinitialize HomeFragment
-            editor.putString(HomeActivity.PET_TYPE,petType);
-            editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress());
-            editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());
-            editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress());
-
-            editor.apply();
-
-        }
 
         // add name and pet type to content provider
         Uri mNewUri;
 
         ContentValues mNewValues = new ContentValues();
 
-        if (!petType.equals("") && !petName.equals(""))
+        //if values in shared preferences are not the default value aka ""
+        if (!prefs.getString(HomeActivity.PET_TYPE, "").equals("") && !prefs.getString(HomeActivity.PET_NAME, "").equals(""))
         {
-            mNewValues.put(FriendProvider.COLUMN_PETNAME, petType.trim());
-            mNewValues.put(FriendProvider.COLUMN_PETNAME, petType.trim());
+            //insert values from shared pref into content provider
+            mNewValues.put(FriendProvider.COLUMN_PETTYPE, prefs.getString(HomeActivity.PET_TYPE, ""));
+            mNewValues.put(FriendProvider.COLUMN_PETNAME, prefs.getString(HomeActivity.PET_NAME, ""));
 
             Log.i("provider", "inside");
             mNewUri = getActivity().getContentResolver().insert(
                     FriendProvider.CONTENT_URI, mNewValues);
         }
+
+
 
 
         return v;
