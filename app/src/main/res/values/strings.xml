@@ -15,4 +15,8 @@
     <string name="happiness">Happiness</string>
     <string name="thirst">Thirst</string>
     <string name="name">name</string>
+
+    <string name="authority">edu.fsu.cs.littlepetz.provider</string>
+    <string name="read_permission">edu.fsu.cs.littlepetz.permission.READ_PERMISSION</string>
+    <string name="write_permission">edu.fsu.cs.littlepetz..permission.WRITE_PERMISSION</string>
 </resources>

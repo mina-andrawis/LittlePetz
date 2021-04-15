@@ -2,6 +2,7 @@ package edu.fsu.cs.littlepetz;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -42,6 +43,8 @@ public class HomeActivity extends AppCompatActivity {
     public static final String THIRST_LEVEL = "thirstLevel";
     public static final String HAPPINESS_LEVEL = "happinessLevel";
 
+    SharedPreferences prefs = getSharedPreferences(MYPREF, 0);
+
     SharedPreferences mPrefs;
 
     @Override
@@ -53,7 +56,6 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-        // initialize prefrence and retrieve UI elements as objects
 
         //replace container with homefragment
         FragmentManager fragmentManager = getFragmentManager();
@@ -61,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, new HomeFragment());
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
 
 
 

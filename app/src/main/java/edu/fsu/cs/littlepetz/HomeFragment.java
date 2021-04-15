@@ -164,11 +164,6 @@ public class HomeFragment extends Fragment {
             public void onTick(long millisUntilFinished) {
                 mTextViewFeedingCountDown.setText( " " + millisUntilFinished / 1000);
                 int time = (int) (millisUntilFinished/1000);
-                /*if (time == 10){
-                    mytoast.setText("Please Feed m");
-                    mytoast.show();
-                }*/
-
 
             }
             public void onFinish() {
