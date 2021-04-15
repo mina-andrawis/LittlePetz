@@ -29,7 +29,6 @@ import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
-    private static final long START_TIME_IN_MILLIS = 600000;
     ImageView imageView;
  
     TextView nameTextView;
@@ -51,9 +50,10 @@ public class HomeFragment extends Fragment {
     Button water;
     Button pet;
     public static final String MYPREF = "MyPref";
-    int hungerStatus = 100;
-    int thirstStatus = 100;
-    int happyStatus = 100;
+    int hungerStatus;
+    int thirstStatus;
+    int happyStatus;
+
 
 
     @Override
@@ -74,9 +74,21 @@ public class HomeFragment extends Fragment {
         // Toast still not working Toast mytoast = new Toast(v.getContext());
 
         //create imageview object
+        HappyBar = (ProgressBar) v.findViewById(R.id.happinessBar);
+        HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
+        ThirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
 
         //create UI objects
- 
+         hungerStatus = 100;
+         thirstStatus = 100;
+         happyStatus = 100;
+
+        HungerBar.setProgress(hungerStatus);
+        ThirstBar.setProgress(thirstStatus);
+        HappyBar.setProgress(happyStatus);
+
+
+
         imageView = (ImageView) v.findViewById(R.id.petImage);
         nameTextView = (TextView) v.findViewById(R.id.homeName);
 
@@ -87,9 +99,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        HappyBar = (ProgressBar) v.findViewById(R.id.happinessBar);
-        HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
-        ThirstBar = (ProgressBar) v.findViewById(R.id.thirstBar);
+
 
 
         Bundle bundle = getArguments();
@@ -123,9 +133,6 @@ public class HomeFragment extends Fragment {
         }
  
             //Figuring out the Progress Bar------------------------------
-            HungerBar=(ProgressBar) v.findViewById(R.id.hungerBar);
-            ThirstBar=(ProgressBar) v.findViewById(R.id.thirstBar);
-            HappyBar=(ProgressBar) v.findViewById(R.id.happinessBar);
 
             feed = v.findViewById(R.id.feedButton);
             feed.setOnClickListener(view -> {
