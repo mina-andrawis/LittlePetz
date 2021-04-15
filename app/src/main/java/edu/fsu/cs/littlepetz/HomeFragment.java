@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,14 +23,27 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import org.w3c.dom.Text;
 
+import java.util.Locale;
 import java.util.Objects;
 
 
 public class HomeFragment extends Fragment {
 
+    private static final long START_TIME_IN_MILLIS = 600000;
     ImageView imageView;
  
     TextView nameTextView;
+    private TextView mTextViewFeedingCountDown;
+    private TextView mTextViewThirstCountDown;
+    private TextView mTextViewHappyCountDown;
+
+    CountDownTimer FeedingCountDownTimer;
+    CountDownTimer ThirstCountDownTimer;
+    CountDownTimer HappyCountDownTimer;
+
+    boolean isCounterRunning  = true;
+
+
     ProgressBar HungerBar;
     ProgressBar ThirstBar;
     ProgressBar HappyBar;
@@ -36,15 +51,18 @@ public class HomeFragment extends Fragment {
     Button water;
     Button pet;
     public static final String MYPREF = "MyPref";
-    int hungerStatus = 0;
-    int thirstStatus = 0;
-    int happyStatus = 0;
+    int hungerStatus = 100;
+    int thirstStatus = 100;
+    int happyStatus = 100;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+
+
 
     }
 
@@ -53,6 +71,7 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.home_fragment, container, false);
+        // Toast still not working Toast mytoast = new Toast(v.getContext());
 
         //create imageview object
 
@@ -60,6 +79,13 @@ public class HomeFragment extends Fragment {
  
         imageView = (ImageView) v.findViewById(R.id.petImage);
         nameTextView = (TextView) v.findViewById(R.id.homeName);
+
+        //Visual Representations of the count downs
+        mTextViewFeedingCountDown = (TextView) v.findViewById(R.id.feedingtimer);
+        mTextViewThirstCountDown = (TextView) v.findViewById(R.id.thirsttimer);
+        mTextViewHappyCountDown = (TextView) v.findViewById(R.id.happytimer);
+
+
 
         HappyBar = (ProgressBar) v.findViewById(R.id.happinessBar);
         HungerBar = (ProgressBar) v.findViewById(R.id.hungerBar);
@@ -103,48 +129,100 @@ public class HomeFragment extends Fragment {
 
             feed = v.findViewById(R.id.feedButton);
             feed.setOnClickListener(view -> {
-                if (hungerStatus <= 100) {
+                FeedingCountDownTimer.cancel();
+                FeedingCountDownTimer.start();
+                if (hungerStatus < 100) {
                     hungerStatus += 25;
-                    HungerBar.setProgress(hungerStatus);
-                }
-                if(hungerStatus > 100){
-                    hungerStatus = 0;
                     HungerBar.setProgress(hungerStatus);
                 }
             });
             water = v.findViewById(R.id.hydrateButton);
             water.setOnClickListener(view -> {
-                if (thirstStatus <= 100) {
+                ThirstCountDownTimer.cancel();
+                ThirstCountDownTimer.start();
+                if (thirstStatus < 100) {
                     thirstStatus += 25;
-                    ThirstBar.setProgress(thirstStatus);
-                }
-                if(thirstStatus > 100){
-                    thirstStatus = 0;
                     ThirstBar.setProgress(thirstStatus);
                 }
             });
 
             pet = v.findViewById(R.id.happyButton);
             pet.setOnClickListener(view -> {
-                if (happyStatus <= 100) {
+                HappyCountDownTimer.cancel();
+                HappyCountDownTimer.start();
+                if (happyStatus < 100) {
                     happyStatus += 25;
-                    HappyBar.setProgress(happyStatus);
-                }
-                if(happyStatus > 100){
-                    happyStatus = 0;
                     HappyBar.setProgress(happyStatus);
                 }
             });
            //Figuring out the Progress Bar------------------------------
+       //Toast Not working yet mytoast.setDuration(Toast.LENGTH_LONG);
+
+        //Code the runs the Count Downs
+        FeedingCountDownTimer = new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                mTextViewFeedingCountDown.setText( " " + millisUntilFinished / 1000);
+                int time = (int) (millisUntilFinished/1000);
+                /*if (time == 10){
+                    mytoast.setText("Please Feed m");
+                    mytoast.show();
+                }*/
+
+
+            }
+            public void onFinish() {
+                if (hungerStatus != 0) {
+                hungerStatus -= 25;
+                HungerBar.setProgress(hungerStatus);}
+                this.cancel();
+                this.start();            }
+
+        }.start();
+
+        ThirstCountDownTimer = new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                mTextViewThirstCountDown.setText(" " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                if (thirstStatus != 0) {
+                    thirstStatus -= 25;
+                    ThirstBar.setProgress(thirstStatus);}
+                this.cancel();
+                this.start();            }
+
+        }.start();
+
+        HappyCountDownTimer = new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                mTextViewHappyCountDown.setText(" " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                if (happyStatus != 0) {
+                    happyStatus -= 25;
+                    HappyBar.setProgress(happyStatus);}
+                this.cancel();
+                this.start();            }
+
+        }.start();
+
 
         return v;
     }
+
+
+
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
 
 
         super.onViewCreated(view, savedInstanceState);
+
 
         nameTextView = view.findViewById(R.id.homeName);
         imageView = (ImageView) view.findViewById(R.id.petImage);
