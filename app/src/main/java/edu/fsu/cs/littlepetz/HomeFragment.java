@@ -137,18 +137,7 @@ public class HomeFragment extends Fragment {
 
         }
 
-        //Setting up reminder toasts -----------------------
-        Context context = v.getContext();
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast Feedtoast = Toast.makeText(context, "Please feed " + bundle.getString("petName"), duration);
-        Toast Thirsttoast = Toast.makeText(context, "Please give " + bundle.getString("petName") + " water", duration);
-        Toast Happytoast = Toast.makeText(context, "Please pet " + bundle.getString("petName"), duration);
-
-        //End of Setting up reminder toasts -----------------------
-
-
-        //Figuring out the Progress Bar------------------------------
+            //Figuring out the Progress Bar------------------------------
             SharedPreferences.Editor editor = prefs.edit(); //separate shared preference for the Progress Bars
 
             feed = v.findViewById(R.id.feedButton);
@@ -171,7 +160,7 @@ public class HomeFragment extends Fragment {
                     thirstStatus += 25;
                     ThirstBar.setProgress(thirstStatus);
                 }
-                editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());
+                editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress()); editor.apply();
 
             });
 
@@ -183,11 +172,19 @@ public class HomeFragment extends Fragment {
                     happyStatus += 25;
                     HappyBar.setProgress(happyStatus);
                 }
-                editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress());
+                editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress()); editor.apply();
 
             });
            //End Progress Bar code-----------------------------------------------------
+        //Setting up reminder toasts -----------------------
+        Context context = v.getContext();
+        int duration = Toast.LENGTH_SHORT;
 
+        Toast Feedtoast = Toast.makeText(context, "Please feed " + bundle.getString("petName"), duration);
+        Toast Thirsttoast = Toast.makeText(context, "Please give " + bundle.getString("petName") + " water", duration);
+        Toast Happytoast = Toast.makeText(context, "Please pet " + bundle.getString("petName"), duration);
+
+        //End of Setting up reminder toasts -----------------------
         //Code the runs the Count Downs ----------------------------------------------------------
         FeedingCountDownTimer = new CountDownTimer(30000, 1000) {
 
@@ -199,8 +196,9 @@ public class HomeFragment extends Fragment {
                 if (hungerStatus != 0) {
                 hungerStatus -= 25;
                 HungerBar.setProgress(hungerStatus);
-                editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress()); }
-                if (hungerStatus <= 50){Feedtoast.show();}
+                editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress()); editor.apply();
+                if (hungerStatus <= 50){Feedtoast.show(); } }
+
                 this.cancel();
                 this.start();            }
 
@@ -218,9 +216,8 @@ public class HomeFragment extends Fragment {
                 if (thirstStatus != 0) {
                     thirstStatus -= 25;
                     ThirstBar.setProgress(thirstStatus);
-                    editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());}
-                if (thirstStatus <= 50){Thirsttoast.show();}
-
+                    editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress()); editor.apply();
+                    if (thirstStatus <= 50){Thirsttoast.show();}}
                 this.cancel();
                 this.start();            }
 
@@ -231,14 +228,15 @@ public class HomeFragment extends Fragment {
             public void onTick(long millisUntilFinished) {
                 mTextViewHappyCountDown.setText(" " + millisUntilFinished / 1000);
                 editor.apply();
+
             }
 
             public void onFinish() {
                 if (happyStatus != 0) {
                     happyStatus -= 25;
                     HappyBar.setProgress(happyStatus);
-                    editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress()); }
-                if (happyStatus <= 50){Happytoast.show();}
+                    editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress()); editor.apply();
+                    if (happyStatus <= 50){Happytoast.show();}}
                 this.cancel();
                 this.start();            }
 
