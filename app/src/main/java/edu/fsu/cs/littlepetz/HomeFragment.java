@@ -2,6 +2,7 @@ package edu.fsu.cs.littlepetz;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -242,6 +243,24 @@ public class HomeFragment extends Fragment {
 
         }.start();
         //End Count Down code ----------------------------------------------------------
+
+        // add name and pet type to content provider
+        Uri mNewUri;
+
+        ContentValues mNewValues = new ContentValues();
+
+        //if values in shared preferences are not the default value aka ""
+        if (!prefs.getString(HomeActivity.PET_TYPE, "").equals("") && !prefs.getString(HomeActivity.PET_NAME, "").equals(""))
+        {
+            //insert values from shared pref into content provider
+            mNewValues.put(FriendProvider.COLUMN_PETTYPE, prefs.getString(HomeActivity.PET_TYPE, ""));
+            mNewValues.put(FriendProvider.COLUMN_PETNAME, prefs.getString(HomeActivity.PET_NAME, ""));
+
+            Log.i("provider", "inside");
+            mNewUri = getActivity().getContentResolver().insert(
+                    FriendProvider.CONTENT_URI, mNewValues);
+        }
+
 
 
         return v;
