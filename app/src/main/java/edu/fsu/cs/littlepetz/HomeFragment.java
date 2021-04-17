@@ -1,6 +1,7 @@
 package edu.fsu.cs.littlepetz;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -64,8 +65,6 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-
-
     }
 
     @Override
@@ -109,7 +108,6 @@ public class HomeFragment extends Fragment {
         SharedPreferences prefs = getActivity().getSharedPreferences(MYPREF, 0);
 
         // if the bundle is not null (picked pet from MainFragment)
-
         if (null != bundle) {
             String petType = bundle.getString("petType");
             String petName = bundle.getString("petName");
@@ -138,8 +136,20 @@ public class HomeFragment extends Fragment {
             editor.apply();
 
         }
- 
-            //Figuring out the Progress Bar------------------------------
+
+        //Setting up reminder toasts -----------------------
+        Context context = v.getContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast Feedtoast = Toast.makeText(context, "Please feed " + bundle.getString("petName"), duration);
+        Toast Thirsttoast = Toast.makeText(context, "Please give " + bundle.getString("petName") + " water", duration);
+        Toast Happytoast = Toast.makeText(context, "Please pet " + bundle.getString("petName"), duration);
+
+        //End of Setting up reminder toasts -----------------------
+
+
+        //Figuring out the Progress Bar------------------------------
+            SharedPreferences.Editor editor = prefs.edit(); //separate shared preference for the Progress Bars
 
             feed = v.findViewById(R.id.feedButton);
             feed.setOnClickListener(view -> {
@@ -148,7 +158,10 @@ public class HomeFragment extends Fragment {
                 if (hungerStatus < 100) {
                     hungerStatus += 25;
                     HungerBar.setProgress(hungerStatus);
+
                 }
+                editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress());
+
             });
             water = v.findViewById(R.id.hydrateButton);
             water.setOnClickListener(view -> {
@@ -158,6 +171,8 @@ public class HomeFragment extends Fragment {
                     thirstStatus += 25;
                     ThirstBar.setProgress(thirstStatus);
                 }
+                editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());
+
             });
 
             pet = v.findViewById(R.id.happyButton);
@@ -168,22 +183,24 @@ public class HomeFragment extends Fragment {
                     happyStatus += 25;
                     HappyBar.setProgress(happyStatus);
                 }
-            });
-           //Figuring out the Progress Bar------------------------------
-       //Toast Not working yet mytoast.setDuration(Toast.LENGTH_LONG);
+                editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress());
 
-        //Code the runs the Count Downs
+            });
+           //End Progress Bar code-----------------------------------------------------
+
+        //Code the runs the Count Downs ----------------------------------------------------------
         FeedingCountDownTimer = new CountDownTimer(30000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 mTextViewFeedingCountDown.setText( " " + millisUntilFinished / 1000);
-                int time = (int) (millisUntilFinished/1000);
-
+                editor.apply();
             }
             public void onFinish() {
                 if (hungerStatus != 0) {
                 hungerStatus -= 25;
-                HungerBar.setProgress(hungerStatus);}
+                HungerBar.setProgress(hungerStatus);
+                editor.putInt(HomeActivity.HUNGER_LEVEL,HungerBar.getProgress()); }
+                if (hungerStatus <= 50){Feedtoast.show();}
                 this.cancel();
                 this.start();            }
 
@@ -193,12 +210,17 @@ public class HomeFragment extends Fragment {
 
             public void onTick(long millisUntilFinished) {
                 mTextViewThirstCountDown.setText(" " + millisUntilFinished / 1000);
+                editor.apply();
+
             }
 
             public void onFinish() {
                 if (thirstStatus != 0) {
                     thirstStatus -= 25;
-                    ThirstBar.setProgress(thirstStatus);}
+                    ThirstBar.setProgress(thirstStatus);
+                    editor.putInt(HomeActivity.THIRST_LEVEL,ThirstBar.getProgress());}
+                if (thirstStatus <= 50){Thirsttoast.show();}
+
                 this.cancel();
                 this.start();            }
 
@@ -208,16 +230,20 @@ public class HomeFragment extends Fragment {
 
             public void onTick(long millisUntilFinished) {
                 mTextViewHappyCountDown.setText(" " + millisUntilFinished / 1000);
+                editor.apply();
             }
 
             public void onFinish() {
                 if (happyStatus != 0) {
                     happyStatus -= 25;
-                    HappyBar.setProgress(happyStatus);}
+                    HappyBar.setProgress(happyStatus);
+                    editor.putInt(HomeActivity.HAPPINESS_LEVEL,HappyBar.getProgress()); }
+                if (happyStatus <= 50){Happytoast.show();}
                 this.cancel();
                 this.start();            }
 
         }.start();
+        //End Count Down code ----------------------------------------------------------
 
 
         return v;
@@ -250,6 +276,7 @@ public class HomeFragment extends Fragment {
 
     }
 
+    //Function used to set pet image
     public void petImagePicker(String petType)
     {
         switch (petType) {
