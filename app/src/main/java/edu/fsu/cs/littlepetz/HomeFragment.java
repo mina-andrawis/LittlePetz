@@ -180,9 +180,9 @@ public class HomeFragment extends Fragment {
         Context context = v.getContext();
         int duration = Toast.LENGTH_SHORT;
 
-        Toast Feedtoast = Toast.makeText(context, "Please feed " + bundle.getString("petName"), duration);
-        Toast Thirsttoast = Toast.makeText(context, "Please give " + bundle.getString("petName") + " water", duration);
-        Toast Happytoast = Toast.makeText(context, "Please pet " + bundle.getString("petName"), duration);
+        Toast Feedtoast = Toast.makeText(context, "Please feed " + prefs.getString(HomeActivity.PET_NAME,""), duration);
+        Toast Thirsttoast = Toast.makeText(context, "Please give " + prefs.getString(HomeActivity.PET_NAME,"") + " water", duration);
+        Toast Happytoast = Toast.makeText(context, "Please pet " + prefs.getString(HomeActivity.PET_NAME,""), duration);
 
         //End of Setting up reminder toasts -----------------------
         //Code the runs the Count Downs ----------------------------------------------------------
